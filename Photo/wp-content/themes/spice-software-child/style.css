@@ -1,0 +1,57 @@
+/*
+Theme Name: Spice Software Child
+Theme URI: https://spicethemes.com/spice-software-wordpress-theme/
+Template: spice-software
+Author: spicethemes
+Author URI: https://spicethemes.com
+Description: Spice Software WordPress Theme is a lightweight, elegant, fully responsive, and translation-ready theme that allows you to create stunning blogs and websites. The theme is well suited for companies, law firms, eCommerce, finance, agency, travel, photography, design, arts, personal, and any other creative websites and blogs. The theme is developed using the Bootstrap 4 framework. It comes with a predesigned home page, good-looking header designs, and a number of content sections that you can easily customize. It also has lots of customization options (banner, services, testimonial, etc) that will help you create a beautiful, unique website in a short time. Spice Software is compatible with popular plugins like Polylang,Rank Math,Yoast SEO, WooCommerce, and Contact Form 7. Spice Software theme is available in several locales.This theme comes with GDPR compatible. (DEMO: https://spice-software.spicethemes.com/)
+Tags: one-column,two-columns,right-sidebar,custom-menu,custom-logo,blog,portfolio,editor-style,featured-images,footer-widgets,sticky-post,threaded-comments,translation-ready,rtl-language-support
+Version: 1.2.1711301113
+Updated: 2024-03-24 18:25:13
+
+*/
+
+* {
+    font-family: 'Spline Sans Mono', sans-serif;
+}
+
+footer {
+    background-color: #fff;
+}
+.footer-menu {
+    border-top: solid 1px black;
+    list-style: none;
+    text-align: center;
+}
+
+.footer-menu ul {
+    bottom: 0;
+}
+.footer-menu li {
+    display: inline-block;
+    margin-right: 100px;
+}
+
+.footer-menu li a {
+    font-size: 16px; 
+    text-decoration: none;
+}
+
+.footer-menu li a:hover {
+    color: #ff0000; 
+}
+
+/* Smartphones ----------- */
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    
+}
+
+/* Tablets ----------- */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    
+}
+
+/* Laptops ----------- */
+@media screen and (min-width: 1025px) {
+    
+}
