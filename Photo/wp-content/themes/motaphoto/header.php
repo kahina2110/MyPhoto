@@ -9,22 +9,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
     </head>
 <body>
-    <nav>
-        <div class="navbar">
-        <input style="display: none;" id="menu-toggle" type="checkbox" />
-    <label  class='menu-button-container' for="menu-toggle"></label>
-            <div class="logo">
-                <img src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/Logo.png'?>"/>
-            </div>
-            <div class="menu">
-                <?php
+    <header>
+
+		<div class="right quarter">	
+            <img class="toggle-nav" src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/Icon Menu.png'?>"/>
+		</div>
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/Logo.png'?>"/>
+                </div>
+                <input style="display: none;" id="menu-toggle" type="checkbox" />
+                <label  class='menu-button-container' for="menu-toggle"></label>
+                <div class="menu">
+                    <?php
     wp_head();
     wp_nav_menu(array(
         'theme_location' => 'header-menu', // identifiant du menu enregistré
     ));
     ?>
     </div>
-    </div>
-    </nav>
+</div>
+</nav>
+</header>
 </body>
 </html>
+<script>
+    jQuery(document).ready(function() {
+    jQuery('.toggle-nav').click(function(e) {
+        jQuery('.navbar ul').slideToggle(3000);
+        e.preventDefault();
+    });
+    
+});
+</script> 

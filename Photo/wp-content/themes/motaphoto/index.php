@@ -1,31 +1,30 @@
 <?php get_header(); 
-$lien=get_field('image');
 
 ?>
 <div class="container"  style="height: 100vh; font-weight: 400;">
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <h2><?php echo get_field('title'); ?></h2>
-        <div class="entry-content">
-            <?php the_content(); ?>
-            <p>TYPE : <?php echo get_field('type'); ?></p>
-            <p>RÉFERENCE : <?php echo get_field('reference'); ?></p>
-
-            <?php 
-            $image = get_field('image');
-
-            // Vérifier si l'image existe
+    <div class="entry-content">
+        <?php the_content(); ?>
+        <?php 
+            $image = get_field('image');        
             if ($image) {
                 $image_url = $image['url'];
-                $image_id = $image['ID'];
                 $image_title = $image['title'];
-                $image_description = $image['description'];
                 $image_alt = $image['alt'];
-            
-                echo '<img style="width: 200px;" src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" title="' . esc_attr($image_title) . '">';
+                
+                echo '<img class="image-post" " src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" title="' . esc_attr($image_title) . '">';
             
             } else {
                 echo 'Aucune image trouvée.';
             }?>
+            
+            <h1 style="font-style: italic;" ><?php echo get_field('title'); ?></h1>
+            <p>RÉFERENCE : <?php echo get_field('reference'); ?></p>
+            <p>TYPE : <?php echo get_field('type'); ?></p>
+
+
+
+
             <?php
             $categories = get_the_terms( get_the_ID(), 'categorie' );
 

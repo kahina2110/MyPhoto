@@ -27,10 +27,9 @@ a {
 }
 
 
-.container h2 {
+.container h1 {
     font-weight: 700;
     font-style: italic;
-    font-size: 90px;
 }
 
 
@@ -71,7 +70,9 @@ textarea {
 }
 
 
-
+.toggle-nav {
+    display: none !important;
+}
 
 
 footer {
@@ -91,7 +92,85 @@ footer {
 
 /* Smartphones ----------- */
 @media screen and (min-width: 320px) and (max-width: 767px) {
+    .toggle-nav {
+        display: inline-block !important;
+        float: right;
+        margin: 25px;
+        font-size: 2em;
+        transition: color linear 0.15s;
+	}
+		
+    a.toggle-nav:link, 
+	a.toggle-nav:visited,
+	a.toggle-nav:hover, 
+	a.toggle-nav:active {
+        text-decoration: none;
+        color: #fff;
+    } 
 
+    .navbar {
+        display: inline-block;
+        position: relative;
+        background: #fff;
+        text-align: left;
+    }
+        
+    .navbar ul {
+        display: none;
+        position: absolute;
+        overflow: auto;
+        top: 0px;
+        height: 100vh;
+        right: 0px;
+        z-index: 999;
+        padding-right: 15px;
+        background: #E00000;
+    }
+    
+    .navbar ul li {
+        float: none;
+        display: block;
+        position: relative;
+        top: 0px;
+        text-align: center;
+        min-width: 200px;
+        background: #E00000;
+        text-align: right;
+        color: #000;
+    }
+
+    .menu {
+        width: 320px;
+    }
+        
+    .navbar li:after { 
+        content: none; 
+    }
+
+    .container {
+        height: 80vh;
+    }
+
+    .container h1 {
+        font-weight: 500;
+        justify-content: flex-start;
+    }
+
+    .entry-content {
+        padding-top: 20px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    img.image-post {
+        width: 267px;
+        height: 397px ;
+    }
+
+    .logo img {
+        margin-bottom: 30px;
+        margin-left: 15px;
+    }
     ul li a {
         text-decoration: none;
     }
@@ -105,9 +184,6 @@ footer {
         padding-bottom: 10px;
         padding-right: 30px;
     }
-
-    
-
     .footer-menu li {
         margin-bottom: 20px;
     }
