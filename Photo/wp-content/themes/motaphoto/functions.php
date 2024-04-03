@@ -5,22 +5,9 @@ function motaphoto_enqueue_styles() {
 }
 add_action('wp_enqueue_scripts', 'motaphoto_enqueue_styles');
 
-function motaphoto_add_admin_pages() {
-    add_menu_page(
-        __('Paramètres du thème motaphoto', 'motaphoto'), 
-        __('motaphoto', 'motaphoto'), 
-        'manage_options', 
-        'motaphoto-settings', 
-        'motaphoto_theme_settings', 
-        'dashicons-admin-settings', 
-        60
-    );
-}
-
-add_action('admin_menu', 'motaphoto_add_admin_pages', 10);
 
 function motaphoto_settings_register() {
-    register_setting('motaphoto_settings_fields', 'motaphoto_settings_fields', 'motaphoto_settings_fields_validate');
+    register_setting('motaphoto_settings_fields', 'motaphoto_settings_fields_validate');
 
     add_settings_section(
         'motaphoto_settings_section', 
@@ -112,8 +99,34 @@ function register_my_menus() {
 
   function load_google_fonts() {
     wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap', false );
-    wp_enqueue_style('poppins', 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet', false);
+    wp_enqueue_style('poppins', 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap ', false);
+    wp_enqueue_style( 'space mono', 'https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap', false);
 }
 add_action( 'wp_enqueue_scripts', 'load_google_fonts' );
+
+
+function charger_modele_page_personnalise() {
+    add_theme_support('page-templates', array('template-custom.php'));
+}
+add_action('init', 'charger_modele_page_personnalise');
+
+// Fonction pour enregistrer une nouvelle taxonomie "catégorie" pour les posts personnalisés
+function register_custom_taxonomy() {
+    $args = array(
+        'labels' => array(
+            'name' => 'Catégories',
+            'singular_name' => 'Catégorie',
+        ),
+        'public' => true,
+        'hierarchical' => true, // Pour créer une taxonomie hiérarchique comme les catégories
+        'show_admin_column' => true, // Pour afficher la colonne dans l'administration
+        'rewrite' => array( 'slug' => 'categorie' ), // Slug de l'URL
+    );
+
+    register_taxonomy( 'categorie', 'photos', $args ); 
+}
+add_action( 'init', 'register_custom_taxonomy' );
+
+
 
 ?>

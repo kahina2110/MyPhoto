@@ -13,24 +13,25 @@ Text Domain: motaphoto
 
 body {
     margin: 0;
+    font-family: 'Space Mono', sans-serif;
+    letter-spacing: 2px;
+
 }
 
 ul li a {
     text-decoration: none;
 }
 
-.menu-header-navbar-menu-container,
-.footer-menu {
-    font-family: 'Spline Sans Mono', sans-serif;
-}
-
-
 a {
     color: inherit
 }
 
 
-
+.container h2 {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 90px;
+}
 
 
 form {
@@ -75,6 +76,7 @@ textarea {
 
 footer {
     background-color: #fff;
+    height: 80px;
 }
 
 .footer-menu {
