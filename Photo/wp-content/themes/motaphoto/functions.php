@@ -111,21 +111,7 @@ function charger_modele_page_personnalise() {
 add_action('init', 'charger_modele_page_personnalise');
 
 // Fonction pour enregistrer une nouvelle taxonomie "catégorie" pour les posts personnalisés
-function register_custom_taxonomy() {
-    $args = array(
-        'labels' => array(
-            'name' => 'Catégories',
-            'singular_name' => 'Catégorie',
-        ),
-        'public' => true,
-        'hierarchical' => true, // Pour créer une taxonomie hiérarchique comme les catégories
-        'show_admin_column' => true, // Pour afficher la colonne dans l'administration
-        'rewrite' => array( 'slug' => 'categorie' ), // Slug de l'URL
-    );
 
-    register_taxonomy( 'categorie', 'photos', $args ); 
-}
-add_action( 'init', 'register_custom_taxonomy' );
 
 function tutsplus_burger_menu_scripts() {
     
@@ -133,5 +119,76 @@ function tutsplus_burger_menu_scripts() {
  
 }
 add_action( 'wp_enqueue_scripts', 'tutsplus_burger_menu_scripts' );
+function cptui_register_my_taxes_categorie() {
 
+	/**
+	 * Taxonomy: catégories.
+	 */
+
+	$labels = [
+		"name" => esc_html__( "catégories", "motaphoto" ),
+		"singular_name" => esc_html__( "catégorie", "motaphoto" ),
+	];
+
+	
+	$args = [
+		"label" => esc_html__( "catégories", "motaphoto" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => false,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'categorie', 'with_front' => true, ],
+		"show_admin_column" => false,
+		"show_in_rest" => true,
+		"show_tagcloud" => false,
+		"rest_base" => "categorie",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"rest_namespace" => "wp/v2",
+		"show_in_quick_edit" => false,
+		"sort" => false,
+		"show_in_graphql" => false,
+	];
+	register_taxonomy( "categorie", [ "attachment", "photos" ], $args );
+}
+add_action( 'init', 'cptui_register_my_taxes_categorie' );
+function cptui_register_my_taxes_format() {
+
+	/**
+	 * Taxonomy: formats.
+	 */
+
+	$labels = [
+		"name" => esc_html__( "formats", "motaphoto" ),
+		"singular_name" => esc_html__( "format", "motaphoto" ),
+	];
+
+	
+	$args = [
+		"label" => esc_html__( "formats", "motaphoto" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => false,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'format', 'with_front' => true, ],
+		"show_admin_column" => false,
+		"show_in_rest" => true,
+		"show_tagcloud" => false,
+		"rest_base" => "format",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"rest_namespace" => "wp/v2",
+		"show_in_quick_edit" => false,
+		"sort" => false,
+		"show_in_graphql" => false,
+	];
+	register_taxonomy( "format", [ "photos" ], $args );
+}
+add_action( 'init', 'cptui_register_my_taxes_format' );
 ?>

@@ -14,23 +14,43 @@ Text Domain: motaphoto
 body {
     margin: 0;
     font-family: 'Space Mono', sans-serif;
-    letter-spacing: 2px;
+
 
 }
 
 ul li a {
     text-decoration: none;
-}
 
+}
+li {
+    list-style: none !important;
+}
 a {
     color: inherit
 }
 
+.entry-content { height: 100vh;}
 
 .container h1 {
     font-weight: 700;
     font-style: italic;
 }
+.container { 
+    margin-left: auto;
+    margin-bottom: auto;
+}
+select {
+    width: 260px;
+    height: 43px;
+    border-color: #B8BBC2;
+    font-family: 'Poppins', sans-serif;
+    color: #313144;
+    letter-spacing: 0.5px;
+    border-radius: 8px;
+    padding :11px, 18px, 11px, 18px;
+}
+
+
 
 
 form {
@@ -70,14 +90,56 @@ textarea {
 }
 
 
+.post-home {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    gap: 20px;
+    align-items: start;
+}
+
+.container {
+    flex-direction: column;
+}
+
+
+.photo img{
+    width: 504px;
+    height: 504px;
+    object-fit: cover;
+}
+
 .toggle-nav {
     display: none !important;
 }
 
+.img-header {
+    width: 100%;
+    object-fit: cover;
+}
 
+
+
+.contact-btn {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: #D8D8D8;
+    width: 267px;
+    height: 50px;
+    align-items: center;
+    
+}
+
+.contact-btn a {
+    text-decoration: none;
+    justify-content: center;
+    font-family: 'Space Mono', sans-serif;
+}
 footer {
     background-color: #fff;
     height: 80px;
+    margin-top: auto;
 }
 
 .footer-menu {
@@ -92,11 +154,14 @@ footer {
 
 /* Smartphones ----------- */
 @media screen and (min-width: 320px) and (max-width: 767px) {
+    header {
+        display: flex;
+    }
     .toggle-nav {
         display: inline-block !important;
-        float: right;
         margin: 25px;
         font-size: 2em;
+        padding-left: 10%;
         transition: color linear 0.15s;
 	}
 		
@@ -113,6 +178,7 @@ footer {
         position: relative;
         background: #fff;
         text-align: left;
+        margin-left: 10%;
     }
         
     .navbar ul {
@@ -138,17 +204,18 @@ footer {
         text-align: right;
         color: #000;
     }
-
     .menu {
-        width: 320px;
+        float:  right;
     }
-        
+    .right.quarter {
+        width: 20px;
+    } 
     .navbar li:after { 
         content: none; 
     }
 
     .container {
-        height: 80vh;
+        justify-content: center;
     }
 
     .container h1 {
@@ -160,21 +227,35 @@ footer {
         padding-top: 20px;
         justify-content: center;
         text-align: center;
+        flex-direction: column-reverse;
     }
+
+    .photo-details {
+        order: 2; 
+    }
+
+    .image-part {
+        order: 1; 
+    }
+
 
     img.image-post {
         width: 267px;
         height: 397px ;
+        object-fit: cover;
     }
 
     .logo img {
-        margin-bottom: 30px;
-        margin-left: 15px;
+        padding-right: 20px;
     }
     ul li a {
         text-decoration: none;
     }
 
+
+    .img-header {
+        height: 253px;
+    }
     .footer-menu {
         display: flex;
         flex-direction: column;
@@ -188,8 +269,22 @@ footer {
         margin-bottom: 20px;
     }
 
-    nav {
+    .contact-div {
+        margin-top: 70px;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        font-weight: 300;
+        border-top: #000 solid 1px;
+        border-bottom: #000 solid 1px;
+        padding-bottom: 20px;
+    }
+
+    header {
+
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    }
+    nav {
         height: 72px;
     }
 
@@ -201,8 +296,33 @@ footer {
         list-style: none;
         display: none;
     }
-}
 
+    select {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    footer {
+        margin-top: auto;
+    }
+
+    .post-home {
+        justify-content: center;
+    }
+    .photo img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .filters {
+        text-align: center;
+        padding-bottom: 20px;
+        flex-direction: column;
+    }
+    .filters select {
+        margin: 5px 0; /* Ajouter une marge de 10px au-dessus et en dessous de chaque sélecteur */
+    }
+}
 
 
 
@@ -216,9 +336,11 @@ footer {
         height: 60px;
 
     }
-
-    nav {
+    header {
+        justify-content: space-between;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    }
+    nav {
         height: 80px;
     }
 
@@ -242,23 +364,76 @@ footer {
     }
 
     .menu-header-navbar-menu-container li {
-
         font-size: 16px;
         display: flex;
         margin-right: 10px;
+    }
+
+    .img-header {
+        height: 253px;
+    }
+    img.image-post {
+        width: 400px;
+        height: 500px;
+    }
+
+
+    .filters {
+        text-align: center;
+        padding-bottom: 20px;
+        flex-direction: column;
+    }
+    .filters select {
+        margin: 5px 0; /* Ajouter une marge de 10px au-dessus et en dessous de chaque sélecteur */
+    }
+
+    .row {
+        text-align: center;
     }
 }
 
 /* Laptops ----------- */
 @media screen and (min-width: 1025px) {
+
+  
      .footer-menu li {
-       display: inline-block;
+        display: inline-block;
         margin-right: 50px;
         margin-left: 50px;
     }
 
+    .image-post {
+        width: 400px;
+        height: 544px;
+    }
 
+    img.image-post { 
+        object-fit: cover;
+    }
 
+    .entry-content {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        justify-content: center;
+        display: flex;
+    }
+    
+
+    .photo-details {
+        height: 324px;
+        padding-right: 250px;
+        margin-top: 220px;
+        border-bottom: #000 solid 1px;
+    }
+    
+    .image-part {
+        margin-left: 30px;
+    }
+
+    .image-part img {
+        width: 500px;
+    }
     .logo {
         width: 60%;
     }
@@ -267,9 +442,11 @@ footer {
         padding-top: 30px;
         margin-left: 10%;
     }
+    header {
 
-    nav {
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    }
+    nav {
         height: 80px;
     }
 
@@ -291,4 +468,19 @@ footer {
         margin-left: 10px;
         margin-right: 50px;
     }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .photo {
+        width: calc(33% - 10px); /* La largeur de chaque photo est de 50% de la largeur de la ligne avec un espace de 10px entre elles */
+        margin-bottom: 20px; /* Ajouter un espacement entre les lignes de photos */
+    }
+
+    .filters {
+        padding-bottom: 30px;
+    }
+    
 }

@@ -1,14 +1,17 @@
 <?php
-get_header();
-?>
-<div id="primary" style="height: 100vh;" class="content-area">
-    <main id="main" class="site-main" role="main">
-  
-   
-    </main><!-- #main -->
+/**
+ * Template Name: Page personnalisée
+ * Description: Modèle pour afficher les pages personnalisées
+ */
+
+get_header(); ?>
+
+<div id="primary" class="content-area">
+    <main id="main" class="site-main">
+<!-- #main -->
 </div><!-- #primary -->
-<footer>
-<?php 
+
+<?php
+// Inclure le fichier de pied de page
 get_footer();
 ?>
-</footer>

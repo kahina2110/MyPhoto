@@ -10,10 +10,6 @@
     </head>
 <body>
     <header>
-
-		<div class="right quarter">	
-            <img class="toggle-nav" src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/Icon Menu.png'?>"/>
-		</div>
         <nav>
             <div class="navbar">
                 <div class="logo">
@@ -31,13 +27,16 @@
     </div>
 </div>
 </nav>
+<div class="right quarter">	
+            <img class="toggle-nav" src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/Icon Menu.png'?>"/>
+		</div>
 </header>
 </body>
 </html>
 <script>
     jQuery(document).ready(function() {
     jQuery('.toggle-nav').click(function(e) {
-        jQuery('.navbar ul').slideToggle(3000);
+        jQuery('.navbar ul').slide();
         e.preventDefault();
     });
     
