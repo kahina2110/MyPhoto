@@ -7,8 +7,8 @@
             <div class="entry-content">
 
                 <div class="photo-details">
-                    
-                    <h1 style="font-style: italic;">
+                
+                    <h1>
                         <?php the_field('title'); ?>
                     </h1>
                     <p>RÉFÉRENCE :
@@ -26,7 +26,7 @@
                             ;
                         }
                     }
-                    
+
                     ?>
                     <?php
                     $formats = get_the_terms(get_the_ID(), 'format');
@@ -39,7 +39,12 @@
                     <p>ANNEE :
                         <?php the_field('annee'); ?>
                     </p>
-                    
+                    <div class="contact-div">
+                        <p>Cette photo vous intéresse ?</p>
+                        <div id="menu-item-157" class="contact-btn">
+                            <button href="#">Contact</button>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="image-part">
@@ -59,23 +64,22 @@
                         echo 'Aucune image trouvée.';
                     }
                     ?>
+
+
                 </div>
-                
+
             </div>
         <?php endwhile; else: ?>
         <p>Aucun post trouvé.</p>
     <?php endif; ?>
 </div>
 
-<div class="contact-div">
-    <p>Cette photo vous intéresse ?</p> 
-    <div class="contact-btn">
-        <a href="#">Contact</a>
-    </div>
-</div>
+
 
 <div class="more">
     <h4>VOUS AIMEREZ AUSSI</h4>
 </div>
 
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/modal.js"></script>
+<?php get_template_part('/page-modal')?>
 <?php get_footer(); ?>

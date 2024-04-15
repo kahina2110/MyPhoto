@@ -6,122 +6,190 @@ Template Name: Accueil
 <?php get_header(); ?>
 
 <div class="container">
-<div>
-    <img class="img-header" src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/Header.png' ?>" alt="" />
-</div>
-
-<!-- Page Title -->
-</br>
-<div class="filters">
-
-    <select >
-        <option value="" selected>CATEGORIES</option>
-        <option value="">MARIAGE</option>
-        <option value="">CONCERT</option>
-        <option value="">RECEPTION</option>
-        <option value="">MARIAGE</option>
-    
-
-        <?php 
-        $categories = get_the_terms(get_the_ID(), 'categorie');
-        
-        if ($categories && !is_wp_error($categories)) {
-    
-            foreach ($categories as $category) {
-                var_dump($category->name);
-                echo '<option value="'.$category->slug.'" >' .$category->name. '</option>';
-            }
-        }
-        
-        ?>
-    </select>
-    <select >
-        <option value="" selected>FORMATS</option>
-        <option value="">PAYSAGE</option>
-        <option value="">PORTRAIT</option>
-    
-    
-
-        <?php 
-        $categories = get_the_terms(get_the_ID(), 'categorie');
-        
-        if ($categories && !is_wp_error($categories)) {
-    
-            foreach ($categories as $category) {
-                var_dump($category->name);
-                echo '<option value="'.$category->slug.'" >' .$category->name. '</option>';
-            }
-        }
-        
-        ?>
-    </select>
-    <select >
-        <option value="" selected>TRIER PAR</option>
-        <option value="">PAYSAGE</option>
-        <option value="">PORTRAIT</option>
-    
-    
-
-        <?php 
-        $categories = get_the_terms(get_the_ID(), 'categorie');
-        
-        if ($categories && !is_wp_error($categories)) {
-    
-            foreach ($categories as $category) {
-                var_dump($category->name);
-                echo '<option value="'.$category->slug.'" >' .$category->name. '</option>';
-            }
-        }
-        
-        ?>
-    </select>
-</div>
-
-
+    <div>
+        <img class="img-header" src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/Header.png' ?>" alt="" />
+    </div>
 
     <div class="row">
         <div class="post-home">
-            <?php
-            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; // Récupérer le numéro de la page
-            $args = array(
-                'post_type' => 'photos', // Le type de post personnalisé
-                'posts_per_page' => 6, // Nombre de posts par page
-                'paged' => $paged // Numéro de la page actuelle
-            );
-            $query = new WP_Query($args);
+            <div class="filters">
+                <div class="form-filter">
+                    <form method="get">
+                        <select name="category" id="category-filter" onchange="this.form.submit()">
+                            <option value="">CATEGORIES</option>
+                            <?php
+                            $categories = get_terms(
+                                array(
+                                    'taxonomy' => 'categorie',
+                                    'hide_empty' => false,
+                                )
+                            );
+                            foreach ($categories as $category) {
+                                echo '<option value="' . $category->slug . '">' . $category->name . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </form>
 
-            if ($query->have_posts()) :
-                while ($query->have_posts()) : $query->the_post();
-            ?>
-                    <div class="photo">
-                        <?php
-                        $image = get_field('image');
-                        if ($image) {
-                            echo '<img class="home-image" src="' . esc_url($image['url']) . '" alt="' . esc_attr($image['alt']) . '">';
-                        }
+                    <form method="get" class="filters">
+                        <select name="format" id="format-filter" onchange="this.form.submit()">
+                            <option value="">FORMATS</option>
+                            <?php
+                            $formats = get_terms(
+                                array(
+                                    'taxonomy' => 'format',
+                                    'hide_empty' => false,
+                                )
+                            );
+                            foreach ($formats as $format) {
+                                echo '<option value="' . $format->slug . '">' . $format->name . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </form>
+                </div>
+                <select class="filterby">
+                    <option value="" selected>TRIER PAR</option>
+                    <option value="">PLUS RÉCENTES</option>
+                    <option value="">PLUS ANCIENNES</option>
+                </select>
+                <?php
+                $sortBy = isset($_GET['sort']) ? $_GET['sort'] : '';
+
+                $args = array(
+                    'post_type' => 'photos',
+                    'posts_per_page' => 8,
+                    'orderby' => 'date', // Par défaut, trier par date
+                    'order' => 'DESC' // Par défaut, trier par ordre décroissant (plus récentes d'abord)
+                );
+
+                if ($sortBy === 'oldest') {
+                    $args['order'] = 'ASC'; // Changer l'ordre pour trier par les plus anciennes d'abord
+                }
+
+
+
+                ?>
+            </div>
+
+            <div id="filtered-posts">
+                <?php
+                $category = isset($_GET['category']) ? $_GET['category'] : '';
+                $format = isset($_GET['format']) ? $_GET['format'] : '';
+
+                $args = array(
+                    'post_type' => 'photos',
+                    'posts_per_page' => 8,
+                );
+
+                $sortBy = isset($_GET['sort']) ? $_GET['sort'] : '';
+
+                $args = array(
+                    'post_type' => 'photos',
+                    'posts_per_page' => 8,
+                    'orderby' => 'date', // Par défaut, trier par date
+                    'order' => 'DESC' // Par défaut, trier par ordre décroissant (plus récentes d'abord)
+                );
+
+                if ($sortBy === 'oldest') {
+                    $args['order'] = 'ASC'; // Changer l'ordre pour trier par les plus anciennes d'abord
+                }
+                // Si on a une catégorie ou un format spécifiés dans la requête, on ajoute ces conditions à nos arguments
+                
+                if (!empty($category) && empty($format)) {
+                    $args['tax_query'] = array(
+                        array(
+                            'taxonomy' => 'categorie',
+                            'field' => 'slug',
+                            'terms' => $category,
+                        ),
+                    );
+                } elseif (!empty($format) && empty($category)) {
+                    $args['tax_query'] = array(
+                        array(
+                            'taxonomy' => 'format',
+                            'field' => 'slug',
+                            'terms' => $format,
+                        ),
+                    );
+                } elseif (!empty($category) && !empty($format)) {
+                    $args['tax_query'] = array(
+                        'relation' => 'OR',
+                        array(
+                            'taxonomy' => 'categorie',
+                            'field' => 'slug',
+                            'terms' => $category,
+                        ),
+                        array(
+                            'taxonomy' => 'format',
+                            'field' => 'slug',
+                            'terms' => $format,
+                        ),
+                    );
+                }
+
+                $query = new WP_Query($args);
+
+                if ($query->have_posts()):
+                    while ($query->have_posts()):
+                        $query->the_post();
                         ?>
+                        <div class="post">
+                            <?php $image = get_field('image');
+                            if ($image) {
+                                $image_url = $image['url'];
+                                $image_alt = $image['alt'];
+                            }
+                            ?>
+                         
+                            <div class="post-content">
+                            <a href="<?= the_permalink(); ?>" >
+                                    <img class="catalog" src="<?= $image_url; ?>" alt="<?= $image_alt; ?>" /><br />
+                                    <span class="icon-eye">
+                                        <i class="fa-light fa-eye "></i>                              
+                                    </span>
+                                </a>
+                            </div>
 
-                    </div>
-            <?php
-                endwhile; // Fin de la boucle
-                wp_reset_postdata();
-
-                // Ajouter la pagination
-                echo '<div class="pagination">';
-                echo paginate_links(array(
-                    'total' => $query->max_num_pages // Nombre total de pages
-                ));
-                echo '</div>';
-            else :
-                // Aucun post trouvé
-                echo '<p>Aucune photo trouvée.</p>';
-            endif;
-            ?>
-
+                        </div>
+                        <?php
+                    endwhile;
+                    wp_reset_postdata();
+                else:
+                    echo 'Aucun article trouvé.';
+                endif;
+                ?>
+            </div>
         </div>
     </div>
+    <form action="?" method="get" id="filterForm">
+    <button id="loadmore" type="button">CHARGER PLUS</button>
+</form>
+
 </div>
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/scripts.js"></script>
+
 
 <footer>
     <?php get_footer(); ?>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const lightboxLinks = document.querySelectorAll('.lightbox-link');
+        lightboxLinks.forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const imageUrl = this.getAttribute('href');
+                const lightbox = document.createElement('div');
+                lightbox.className = 'lightbox';
+                lightbox.innerHTML = '<img src="' + imageUrl + '" />';
+                document.body.appendChild(lightbox);
+
+                lightbox.addEventListener('click', function() {
+                    this.remove();
+                });
+            });
+        });
+    });
+</script>

@@ -21,7 +21,7 @@
                     <?php
     wp_head();
     wp_nav_menu(array(
-        'theme_location' => 'header-menu', // identifiant du menu enregistré
+        'theme_location' => 'header-menu', 
     ));
     ?>
     </div>
@@ -33,12 +33,8 @@
 </header>
 </body>
 </html>
-<script>
-    jQuery(document).ready(function() {
-    jQuery('.toggle-nav').click(function(e) {
-        jQuery('.navbar ul').slide();
-        e.preventDefault();
-    });
-    
-});
-</script> 
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/burger-menu.js"></script>
+
+
+<?php get_template_part('page-modal')?> 
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/modal.js"></script>

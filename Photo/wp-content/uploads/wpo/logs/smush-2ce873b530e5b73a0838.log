@@ -1,0 +1,149 @@
+[2024-04-14 14:55:38 : INFO] - Re_Smush_It_Task server status: Online 
+[2024-04-14 14:55:39 : INFO] - A total of 20 tasks of type smush found and will be processed in this iteration 
+[2024-04-14 14:55:39 : DEBUG] - Lock option (updraft_lock_smush, wp_options) was created in the database 
+[2024-04-14 14:55:39 : INFO] - Lock (updraft_lock_smush, wp_options) acquired after initialising the database 
+[2024-04-14 14:55:39 : INFO] - Processing task with ID : 1, and type 'smush' 
+[2024-04-14 14:55:39 : INFO] - Re_Smush_It_Task - Attachment ID : 26, Started on : April 14, 2024 02:55:38 
+[2024-04-14 14:55:39 : INFO] - File: Logo.png, Compression quality: 60 
+[2024-04-14 14:55:39 : INFO] - Backing up the original image - 2024/03/Logo-updraft-pre-smush-original.png 
+[2024-04-14 14:55:39 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:55:39 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/03/Logo.png.The file was compressed from 1.42 KB to 872 bytes, saving 40.19 percent, using WP-Optimize 
+[2024-04-14 14:55:39 : INFO] - Completed processing task with ID : 1, and type 'smush' 
+[2024-04-14 14:55:39 : INFO] - Processing task with ID : 2, and type 'smush' 
+[2024-04-14 14:55:39 : INFO] - Re_Smush_It_Task - Attachment ID : 62, Started on : April 14, 2024 02:55:38 
+[2024-04-14 14:55:39 : INFO] - File: Header.png, Compression quality: 60 
+[2024-04-14 14:55:41 : INFO] - Backing up the original image - 2024/03/Header-updraft-pre-smush-original.png 
+[2024-04-14 14:55:44 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:55:44 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/03/Header.png.The file was compressed from 1.64 MB to 548.74 KB, saving 67.37 percent, using WP-Optimize 
+[2024-04-14 14:55:44 : INFO] - Completed processing task with ID : 2, and type 'smush' 
+[2024-04-14 14:55:44 : INFO] - Processing task with ID : 3, and type 'smush' 
+[2024-04-14 14:55:44 : INFO] - Re_Smush_It_Task - Attachment ID : 65, Started on : April 14, 2024 02:55:38 
+[2024-04-14 14:55:44 : INFO] - File: Header-1.png, Compression quality: 60 
+[2024-04-14 14:55:46 : INFO] - Backing up the original image - 2024/03/Header-1-updraft-pre-smush-original.png 
+[2024-04-14 14:55:49 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:55:49 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/03/Header-1.png.The file was compressed from 1.64 MB to 548.74 KB, saving 67.37 percent, using WP-Optimize 
+[2024-04-14 14:55:49 : INFO] - Completed processing task with ID : 3, and type 'smush' 
+[2024-04-14 14:55:49 : INFO] - Processing task with ID : 4, and type 'smush' 
+[2024-04-14 14:55:49 : INFO] - Re_Smush_It_Task - Attachment ID : 70, Started on : April 14, 2024 02:55:38 
+[2024-04-14 14:55:49 : INFO] - File: Capture-decran-2024-03-29-a-15.31.58.png, Compression quality: 60 
+[2024-04-14 14:55:49 : INFO] - Backing up the original image - 2024/03/Capture-decran-2024-03-29-a-15.31.58-updraft-pre-smush-original.png 
+[2024-04-14 14:55:50 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:55:50 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/03/Capture-decran-2024-03-29-a-15.31.58.png.The file was compressed from 104.13 KB to 38.23 KB, saving 63.28 percent, using WP-Optimize 
+[2024-04-14 14:55:50 : INFO] - Completed processing task with ID : 4, and type 'smush' 
+[2024-04-14 14:55:50 : INFO] - Processing task with ID : 5, and type 'smush' 
+[2024-04-14 14:55:50 : INFO] - Re_Smush_It_Task - Attachment ID : 97, Started on : April 14, 2024 02:55:38 
+[2024-04-14 14:55:50 : INFO] - File: nathalie-0-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:55:50 : INFO] - Backing up the original image - 2024/04/nathalie-0-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:55:52 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:55:52 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-0-scaled.jpeg.The file was compressed from 375.93 KB to 205.16 KB, saving 45.43 percent, using WP-Optimize 
+[2024-04-14 14:55:52 : INFO] - Completed processing task with ID : 5, and type 'smush' 
+[2024-04-14 14:55:52 : INFO] - Processing task with ID : 6, and type 'smush' 
+[2024-04-14 14:55:52 : INFO] - Re_Smush_It_Task - Attachment ID : 98, Started on : April 14, 2024 02:55:38 
+[2024-04-14 14:55:52 : INFO] - File: nathalie-1-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:55:53 : INFO] - Backing up the original image - 2024/04/nathalie-1-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:55:55 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:55:55 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-1-scaled.jpeg.The file was compressed from 624.69 KB to 351.66 KB, saving 43.71 percent, using WP-Optimize 
+[2024-04-14 14:55:55 : INFO] - Completed processing task with ID : 6, and type 'smush' 
+[2024-04-14 14:55:55 : INFO] - Processing task with ID : 7, and type 'smush' 
+[2024-04-14 14:55:55 : INFO] - Re_Smush_It_Task - Attachment ID : 99, Started on : April 14, 2024 02:55:38 
+[2024-04-14 14:55:55 : INFO] - File: nathalie-2-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:55:56 : INFO] - Backing up the original image - 2024/04/nathalie-2-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:55:58 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:55:58 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-2-scaled.jpeg.The file was compressed from 981.24 KB to 541.91 KB, saving 44.77 percent, using WP-Optimize 
+[2024-04-14 14:55:58 : INFO] - Completed processing task with ID : 7, and type 'smush' 
+[2024-04-14 14:55:58 : INFO] - Processing task with ID : 8, and type 'smush' 
+[2024-04-14 14:55:58 : INFO] - Re_Smush_It_Task - Attachment ID : 100, Started on : April 14, 2024 02:55:38 
+[2024-04-14 14:55:58 : INFO] - File: nathalie-3-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:55:59 : INFO] - Backing up the original image - 2024/04/nathalie-3-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:56:01 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:56:01 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-3-scaled.jpeg.The file was compressed from 253.55 KB to 135.17 KB, saving 46.69 percent, using WP-Optimize 
+[2024-04-14 14:56:01 : INFO] - Completed processing task with ID : 8, and type 'smush' 
+[2024-04-14 14:56:01 : INFO] - Processing task with ID : 9, and type 'smush' 
+[2024-04-14 14:56:01 : INFO] - Re_Smush_It_Task - Attachment ID : 101, Started on : April 14, 2024 02:55:38 
+[2024-04-14 14:56:01 : INFO] - File: nathalie-4-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:56:01 : INFO] - Backing up the original image - 2024/04/nathalie-4-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:56:04 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:56:04 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-4-scaled.jpeg.The file was compressed from 677.80 KB to 390.99 KB, saving 42.32 percent, using WP-Optimize 
+[2024-04-14 14:56:04 : INFO] - Completed processing task with ID : 9, and type 'smush' 
+[2024-04-14 14:56:04 : INFO] - Processing task with ID : 10, and type 'smush' 
+[2024-04-14 14:56:04 : INFO] - Re_Smush_It_Task - Attachment ID : 102, Started on : April 14, 2024 02:55:38 
+[2024-04-14 14:56:04 : INFO] - File: nathalie-5-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:56:04 : INFO] - Backing up the original image - 2024/04/nathalie-5-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:56:06 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:56:06 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-5-scaled.jpeg.The file was compressed from 840.52 KB to 430.69 KB, saving 48.76 percent, using WP-Optimize 
+[2024-04-14 14:56:06 : INFO] - Completed processing task with ID : 10, and type 'smush' 
+[2024-04-14 14:56:06 : INFO] - Processing task with ID : 11, and type 'smush' 
+[2024-04-14 14:56:06 : INFO] - Re_Smush_It_Task - Attachment ID : 103, Started on : April 14, 2024 02:55:38 
+[2024-04-14 14:56:06 : INFO] - File: nathalie-6-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:56:07 : INFO] - Backing up the original image - 2024/04/nathalie-6-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:56:09 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:56:09 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-6-scaled.jpeg.The file was compressed from 752.34 KB to 338.02 KB, saving 55.07 percent, using WP-Optimize 
+[2024-04-14 14:56:10 : INFO] - Completed processing task with ID : 11, and type 'smush' 
+[2024-04-14 14:56:10 : INFO] - Processing task with ID : 12, and type 'smush' 
+[2024-04-14 14:56:10 : INFO] - Re_Smush_It_Task - Attachment ID : 104, Started on : April 14, 2024 02:55:38 
+[2024-04-14 14:56:10 : INFO] - File: nathalie-10-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:56:11 : INFO] - Backing up the original image - 2024/04/nathalie-10-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:56:13 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:56:13 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-10-scaled.jpeg.The file was compressed from 1.37 MB to 810.18 KB, saving 42.24 percent, using WP-Optimize 
+[2024-04-14 14:56:13 : INFO] - Completed processing task with ID : 12, and type 'smush' 
+[2024-04-14 14:56:13 : INFO] - Processing task with ID : 13, and type 'smush' 
+[2024-04-14 14:56:13 : INFO] - Re_Smush_It_Task - Attachment ID : 105, Started on : April 14, 2024 02:55:38 
+[2024-04-14 14:56:13 : INFO] - File: nathalie-11-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:56:14 : INFO] - Backing up the original image - 2024/04/nathalie-11-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:56:15 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:56:15 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-11-scaled.jpeg.The file was compressed from 362.14 KB to 204.14 KB, saving 43.63 percent, using WP-Optimize 
+[2024-04-14 14:56:15 : INFO] - Completed processing task with ID : 13, and type 'smush' 
+[2024-04-14 14:56:15 : INFO] - Processing task with ID : 14, and type 'smush' 
+[2024-04-14 14:56:16 : INFO] - Re_Smush_It_Task - Attachment ID : 106, Started on : April 14, 2024 02:55:38 
+[2024-04-14 14:56:16 : INFO] - File: nathalie-12-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:56:16 : INFO] - Backing up the original image - 2024/04/nathalie-12-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:56:19 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:56:19 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-12-scaled.jpeg.The file was compressed from 505.21 KB to 298.98 KB, saving 40.82 percent, using WP-Optimize 
+[2024-04-14 14:56:19 : INFO] - Completed processing task with ID : 14, and type 'smush' 
+[2024-04-14 14:56:19 : INFO] - Processing task with ID : 15, and type 'smush' 
+[2024-04-14 14:56:19 : INFO] - Re_Smush_It_Task - Attachment ID : 107, Started on : April 14, 2024 02:55:39 
+[2024-04-14 14:56:19 : INFO] - File: nathalie-13-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:56:21 : INFO] - Backing up the original image - 2024/04/nathalie-13-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:56:24 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:56:24 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-13-scaled.jpeg.The file was compressed from 283.04 KB to 156.08 KB, saving 44.86 percent, using WP-Optimize 
+[2024-04-14 14:56:24 : INFO] - Completed processing task with ID : 15, and type 'smush' 
+[2024-04-14 14:56:24 : INFO] - Processing task with ID : 16, and type 'smush' 
+[2024-04-14 14:56:24 : INFO] - Re_Smush_It_Task - Attachment ID : 108, Started on : April 14, 2024 02:55:39 
+[2024-04-14 14:56:24 : INFO] - File: nathalie-14-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:56:24 : INFO] - Backing up the original image - 2024/04/nathalie-14-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:56:26 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:56:26 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-14-scaled.jpeg.The file was compressed from 486.42 KB to 267.01 KB, saving 45.11 percent, using WP-Optimize 
+[2024-04-14 14:56:26 : INFO] - Completed processing task with ID : 16, and type 'smush' 
+[2024-04-14 14:56:26 : INFO] - Processing task with ID : 17, and type 'smush' 
+[2024-04-14 14:56:26 : INFO] - Re_Smush_It_Task - Attachment ID : 109, Started on : April 14, 2024 02:55:39 
+[2024-04-14 14:56:26 : INFO] - File: nathalie-15-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:56:27 : INFO] - Backing up the original image - 2024/04/nathalie-15-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:56:29 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:56:29 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-15-scaled.jpeg.The file was compressed from 669.72 KB to 390.48 KB, saving 41.7 percent, using WP-Optimize 
+[2024-04-14 14:56:29 : INFO] - Completed processing task with ID : 17, and type 'smush' 
+[2024-04-14 14:56:29 : INFO] - Processing task with ID : 18, and type 'smush' 
+[2024-04-14 14:56:29 : INFO] - Re_Smush_It_Task - Attachment ID : 110, Started on : April 14, 2024 02:55:39 
+[2024-04-14 14:56:29 : INFO] - File: nathalie-7-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:56:30 : INFO] - Backing up the original image - 2024/04/nathalie-7-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:56:32 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:56:32 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-7-scaled.jpeg.The file was compressed from 386.70 KB to 221.18 KB, saving 42.8 percent, using WP-Optimize 
+[2024-04-14 14:56:32 : INFO] - Completed processing task with ID : 18, and type 'smush' 
+[2024-04-14 14:56:32 : INFO] - Processing task with ID : 19, and type 'smush' 
+[2024-04-14 14:56:32 : INFO] - Re_Smush_It_Task - Attachment ID : 111, Started on : April 14, 2024 02:55:39 
+[2024-04-14 14:56:32 : INFO] - File: nathalie-8-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:56:32 : INFO] - Backing up the original image - 2024/04/nathalie-8-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:56:34 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:56:34 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-8-scaled.jpeg.The file was compressed from 441.68 KB to 258.04 KB, saving 41.58 percent, using WP-Optimize 
+[2024-04-14 14:56:35 : INFO] - Completed processing task with ID : 19, and type 'smush' 
+[2024-04-14 14:56:35 : INFO] - Processing task with ID : 20, and type 'smush' 
+[2024-04-14 14:56:35 : INFO] - Re_Smush_It_Task - Attachment ID : 112, Started on : April 14, 2024 02:55:39 
+[2024-04-14 14:56:35 : INFO] - File: nathalie-9-scaled.jpeg, Compression quality: 60 
+[2024-04-14 14:56:35 : INFO] - Backing up the original image - 2024/04/nathalie-9-scaled-updraft-pre-smush-original.jpeg 
+[2024-04-14 14:56:37 : INFO] - There were no WebP conversion tools found on your server. 
+[2024-04-14 14:56:37 : INFO] - Successfully optimized the image - /Applications/MAMP/htdocs/MyPhoto/Photo/wp-content/uploads/2024/04/nathalie-9-scaled.jpeg.The file was compressed from 643.55 KB to 320.82 KB, saving 50.15 percent, using WP-Optimize 
+[2024-04-14 14:56:37 : INFO] - Completed processing task with ID : 20, and type 'smush' 
+[2024-04-14 14:56:37 : INFO] - Lock option (updraft_lock_smush, wp_options) released 
+[2024-04-14 14:56:37 : INFO] - Successfully processed the queue (smush). 20 tasks were processed out of 20. 
+[2024-04-14 14:56:37 : INFO] - Lock option (updraft_lock_smush, wp_options) was deleted from the database 
+[2024-04-14 14:56:37 : INFO] - Cleaning up tasks of type (smush). A total of 20 tasks will be deleted. 
+[2024-04-15 10:32:00 : INFO] - Pruning the smush log file 

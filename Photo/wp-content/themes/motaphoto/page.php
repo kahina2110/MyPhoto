@@ -15,3 +15,5 @@ get_header(); ?>
 // Inclure le fichier de pied de page
 get_footer();
 ?>
+
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/modal.js"></script>

@@ -22,23 +22,26 @@ ul li a {
     text-decoration: none;
 
 }
+
 li {
     list-style: none !important;
 }
+
 a {
     color: inherit
 }
 
-.entry-content { height: 100vh;}
 
 .container h1 {
     font-weight: 700;
     font-style: italic;
 }
-.container { 
+
+.container {
     margin-left: auto;
     margin-bottom: auto;
 }
+
 select {
     width: 260px;
     height: 43px;
@@ -47,10 +50,8 @@ select {
     color: #313144;
     letter-spacing: 0.5px;
     border-radius: 8px;
-    padding :11px, 18px, 11px, 18px;
+    padding: 11px, 18px, 11px, 18px;
 }
-
-
 
 
 form {
@@ -58,20 +59,30 @@ form {
     justify-content: center;
     margin-right: auto;
     margin-left: auto;
+    color: #313144;
 }
 
 .wpcf7-form.init {
     width: 263px;
 }
 
-.wpcf7-form.init input,
-textarea {
-    border-color: #B8BBC2;
+
+
+input[type="text"],
+[type="email"] {
+    border: 1px solid #B8BBC2;
     border-radius: 8px;
+    padding: 8px;
+    outline: none;
+    box-shadow: none;
+    height: 30px;
 }
 
-.wpcf7-form.init img {
-    margin-right: 300px;
+textarea {
+    width: 300px;
+    height: 210px;
+    border-radius: 8px;
+    border: 1px solid #B8BBC2;
 }
 
 .section-space {
@@ -85,12 +96,16 @@ textarea {
     font-family: 'Spline sans Mono', sans-serif;
     color: #000;
     font-weight: lighter;
-    padding-right: 10px;
-    width: 240px;
+    outline: none;
+    width: 303px;
+    height: 50px;
+    border: none;
+    padding: 8px, 15px, 8px, 15px;
+    box-shadow: none;
 }
 
 
-.post-home {
+.post-home, .test {
     margin-left: auto;
     margin-right: auto;
     display: grid;
@@ -103,7 +118,7 @@ textarea {
 }
 
 
-.photo img{
+.photo img {
     width: 504px;
     height: 504px;
     object-fit: cover;
@@ -118,24 +133,39 @@ textarea {
     object-fit: cover;
 }
 
-
+.photo-details h1 {
+    font-style: italic;
+}
 
 .contact-btn {
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
     background-color: #D8D8D8;
     width: 267px;
     height: 50px;
     align-items: center;
-    
+
 }
 
-.contact-btn a {
-    text-decoration: none;
-    justify-content: center;
+.contact-btn button {
+    display: inline-block;
+    background-color: #D8D8D8;
     font-family: 'Space Mono', sans-serif;
+    font-size: 16px;
+    border: none;
+    text-align: center;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 10px;
 }
+
+.more h4 {
+    font-weight: 200;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 18px;
+}
+
 footer {
     background-color: #fff;
     height: 80px;
@@ -157,42 +187,42 @@ footer {
     header {
         display: flex;
     }
+
     .toggle-nav {
         display: inline-block !important;
-        margin: 25px;
+        margin-top: 25px;
         font-size: 2em;
-        padding-left: 10%;
         transition: color linear 0.15s;
-	}
-		
-    a.toggle-nav:link, 
-	a.toggle-nav:visited,
-	a.toggle-nav:hover, 
-	a.toggle-nav:active {
+    }
+
+    a.toggle-nav:link,
+    a.toggle-nav:visited,
+    a.toggle-nav:hover,
+    a.toggle-nav:active {
         text-decoration: none;
         color: #fff;
-    } 
+    }
 
     .navbar {
         display: inline-block;
         position: relative;
         background: #fff;
         text-align: left;
-        margin-left: 10%;
     }
-        
+
     .navbar ul {
         display: none;
         position: absolute;
         overflow: auto;
         top: 0px;
         height: 100vh;
-        right: 0px;
+        right: -68px;
         z-index: 999;
-        padding-right: 15px;
+        margin-top: 72px;
+        padding: 70px;
         background: #E00000;
     }
-    
+
     .navbar ul li {
         float: none;
         display: block;
@@ -200,18 +230,24 @@ footer {
         top: 0px;
         text-align: center;
         min-width: 200px;
+        font-size: 40px;
+        font-weight: 400;
         background: #E00000;
+        line-height: 65px;
         text-align: right;
-        color: #000;
+        color: #fff;
     }
+
     .menu {
-        float:  right;
+        float: right;
     }
+
     .right.quarter {
         width: 20px;
-    } 
-    .navbar li:after { 
-        content: none; 
+    }
+
+    .navbar li:after {
+        content: none;
     }
 
     .container {
@@ -225,37 +261,50 @@ footer {
 
     .entry-content {
         padding-top: 20px;
+        display: flex;
         justify-content: center;
-        text-align: center;
         flex-direction: column-reverse;
     }
-
+    
     .photo-details {
-        order: 2; 
+        text-align: left; /* Pour justifier le texte à gauche */
+        max-width: 270px; /* Définissez une largeur maximale pour limiter la largeur du texte */
     }
-
+    .photo-details h1 {
+        font-size: 36px;
+        font-weight: 400;
+    }
     .image-part {
-        order: 1; 
+        margin-top: 30px;
+        text-align: center; /* Centrer l'image */
     }
-
+    
 
     img.image-post {
         width: 267px;
-        height: 397px ;
+        height: 397px;
         object-fit: cover;
     }
 
     .logo img {
         padding-right: 20px;
     }
+
     ul li a {
         text-decoration: none;
     }
-
+    .modal {
+        z-index: 9999; /* Assurez-vous que le z-index est supérieur à celui de la navbar */
+        position: fixed;
+        top: 50%; /* Centrez verticalement */
+        left: 50%; /* Centrez horizontalement */
+        transform: translate(-50%, -50%); /* Centrez la modale */
+    }
 
     .img-header {
         height: 253px;
     }
+
     .footer-menu {
         display: flex;
         flex-direction: column;
@@ -265,12 +314,13 @@ footer {
         padding-bottom: 10px;
         padding-right: 30px;
     }
+
     .footer-menu li {
         margin-bottom: 20px;
     }
 
     .contact-div {
-        margin-top: 70px;
+        margin: 0 ;
         text-align: center;
         font-family: 'Poppins', sans-serif;
         font-size: 14px;
@@ -284,6 +334,7 @@ footer {
 
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
     }
+
     nav {
         height: 72px;
     }
@@ -307,7 +358,11 @@ footer {
     }
 
     .post-home {
-        justify-content: center;
+        text-align: center;
+    }
+
+    .row img {
+        width: 50%;
     }
     .photo img {
         width: 250px;
@@ -319,9 +374,70 @@ footer {
         padding-bottom: 20px;
         flex-direction: column;
     }
+
     .filters select {
-        margin: 5px 0; /* Ajouter une marge de 10px au-dessus et en dessous de chaque sélecteur */
+        margin: 5px 0;
+        /* Ajouter une marge de 10px au-dessus et en dessous de chaque sélecteur */
     }
+
+
+    .catalog {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .contact-btn {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+      /* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+    .wpcf7.js {
+        padding-right: 40px;
+    }
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 55%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#myModal {
+    transition: opacity 0.3s;
+}
+
 }
 
 
@@ -336,10 +452,12 @@ footer {
         height: 60px;
 
     }
+
     header {
         justify-content: space-between;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
     }
+
     nav {
         height: 80px;
     }
@@ -347,6 +465,7 @@ footer {
     .navbar {
         display: flex;
     }
+
     .logo {
         width: 60%;
     }
@@ -372,6 +491,7 @@ footer {
     .img-header {
         height: 253px;
     }
+
     img.image-post {
         width: 400px;
         height: 500px;
@@ -383,20 +503,93 @@ footer {
         padding-bottom: 20px;
         flex-direction: column;
     }
+
     .filters select {
-        margin: 5px 0; /* Ajouter une marge de 10px au-dessus et en dessous de chaque sélecteur */
+        margin: 5px 0;
+        /* Ajouter une marge de 10px au-dessus et en dessous de chaque sélecteur */
     }
 
     .row {
         text-align: center;
     }
+
+
+    .contact-div {
+        text-align: center;
+    }
+
+    .catalog {
+        width: 400px;
+        height: 400px;
+        object-fit: cover;
+    }
+
+    .form-contact img {
+        width: 100%;
+    }
+    /* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
 }
+    .wpcf7.js {
+        padding-right: 40px;
+    }
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 55%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#myModal {
+    transition: opacity 0.3s;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
 
 /* Laptops ----------- */
 @media screen and (min-width: 1025px) {
 
-  
-     .footer-menu li {
+
+    .footer-menu li {
         display: inline-block;
         margin-right: 50px;
         margin-left: 50px;
@@ -407,10 +600,12 @@ footer {
         height: 544px;
     }
 
-    img.image-post { 
+    img.image-post {
         object-fit: cover;
     }
-
+    .img-header {
+        padding-bottom: 20px;
+    }
     .entry-content {
         margin-left: auto;
         margin-right: auto;
@@ -418,22 +613,45 @@ footer {
         justify-content: center;
         display: flex;
     }
-    
+
 
     .photo-details {
+        margin-left: 10%;
         height: 324px;
-        padding-right: 250px;
-        margin-top: 220px;
+        margin-top: 32.5%;
+        width: 50%;
         border-bottom: #000 solid 1px;
     }
-    
+
     .image-part {
         margin-left: 30px;
+        width: 50%;
     }
 
     .image-part img {
         width: 500px;
+        height: 840px;
     }
+
+    .contact-div {
+        padding-top: 20px;
+        margin-top: 60px;
+        justify-content: space-between;
+        display: flex;
+        padding-bottom: 60px;
+    }
+
+
+    .contact-div p {
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        letter-spacing: normal;
+    }
+
+    .more {
+        margin-top: 100px;
+    }
+
     .logo {
         width: 60%;
     }
@@ -442,10 +660,12 @@ footer {
         padding-top: 30px;
         margin-left: 10%;
     }
+
     header {
 
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
     }
+
     nav {
         height: 80px;
     }
@@ -462,25 +682,185 @@ footer {
     }
 
     .menu-header-navbar-menu-container li {
-
         font-size: 16px;
         display: flex;
         margin-left: 10px;
         margin-right: 50px;
     }
 
-    .row {
-        display: flex;
-        flex-wrap: wrap;
+     .row {
+        display: grid;
+        gap: 20px; /* Espacement entre les images */
     }
-    
+
+    .catalog {
+        width: 100%; /* Utilisez toute la largeur disponible dans la colonne */
+        height: auto; /* Permettez à la hauteur de s'adapter automatiquement */
+    }
+
     .photo {
-        width: calc(33% - 10px); /* La largeur de chaque photo est de 50% de la largeur de la ligne avec un espace de 10px entre elles */
-        margin-bottom: 20px; /* Ajouter un espacement entre les lignes de photos */
+        width: calc(33% - 10px);
+        margin-bottom: 20px;
+    }
+
+
+    .catalog {
+        display: flexbox;
+        width: 564px;
+        height: 495px;
+        object-fit: cover;
+    }
+
+
+
+    .form-contact {
+        width: 597px;
+        /* text-align: center; */
+        border: #000 solid;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .form-filter {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .form-filter button {
+        font-weight: lighter;
+        outline: none;
+        height: 50px;
+        border: none;
+        padding: 8px, 15px, 8px, 15px;
+        box-shadow: none;
     }
 
     .filters {
-        padding-bottom: 30px;
+       
+    justify-content: space-between;
+        padding-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #format-filter {
+        margin-left: 10px;
+    }
+    .filterby {
+        margin-left: 26%;
+    }
+
+    .post-content {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+   
+    /* Ajoutez ce code CSS à votre fichier style.css de votre thème WordPress */
+
+    #filtered-posts {
+        column-count: 2;
+        /* Diviser en deux colonnes */
+        column-gap: 20px;
+        /* Espacement entre les colonnes */
+    }
+
+    .post {
+        break-inside: avoid;
+        /* Éviter que les articles ne soient coupés en deux colonnes */
+        margin-bottom: 20px;
+        /* Espacement entre les articles */
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
     }
     
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        /* 15% from the top and centered */
+        border: 1px solid #888;
+        width: 42%;
+        /* Could be more or less, depending on screen size */
+    }
+    
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    #myModal {
+        transition: opacity 0.3s;
+    }
+}
+
+
+
+
+header {
+    justify-content: space-around;
+}
+
+/* CSS pour l'icône d'œil */
+.icon-eye {
+    display: none; /* Masquer par défaut */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.post-content {
+    position: relative;
+}
+
+.post-content:hover .icon-eye {
+    display: block; /* Afficher au survol */
+}
+
+
+
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    text-align: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    margin-top: 5%;
 }
