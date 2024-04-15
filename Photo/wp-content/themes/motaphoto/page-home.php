@@ -162,8 +162,8 @@ Template Name: Accueil
             </div>
         </div>
     </div>
-    <form action="?" method="get" id="filterForm">
-    <button id="loadmore" type="button">CHARGER PLUS</button>
+    <form action="?" method="get" id="filterForm" class="load-more">
+    <button id="loadmore" type="button">Charger plus</button>
 </form>
 
 </div>

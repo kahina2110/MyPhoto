@@ -105,7 +105,8 @@ textarea {
 }
 
 
-.post-home, .test {
+.post-home,
+.test {
     margin-left: auto;
     margin-right: auto;
     display: grid;
@@ -254,10 +255,7 @@ footer {
         justify-content: center;
     }
 
-    .container h1 {
-        font-weight: 500;
-        justify-content: flex-start;
-    }
+   
 
     .entry-content {
         padding-top: 20px;
@@ -265,20 +263,22 @@ footer {
         justify-content: center;
         flex-direction: column-reverse;
     }
-    
-    .photo-details {
-        text-align: left; /* Pour justifier le texte à gauche */
-        max-width: 270px; /* Définissez une largeur maximale pour limiter la largeur du texte */
-    }
+
+   .photo-details p {
+    text-align: center;
+   }
+
     .photo-details h1 {
+        text-align: center;
         font-size: 36px;
         font-weight: 400;
     }
+
     .image-part {
         margin-top: 30px;
-        text-align: center; /* Centrer l'image */
+        text-align: center;
     }
-    
+
 
     img.image-post {
         width: 267px;
@@ -293,12 +293,13 @@ footer {
     ul li a {
         text-decoration: none;
     }
+
     .modal {
-        z-index: 9999; /* Assurez-vous que le z-index est supérieur à celui de la navbar */
+        z-index: 9999;
         position: fixed;
-        top: 50%; /* Centrez verticalement */
-        left: 50%; /* Centrez horizontalement */
-        transform: translate(-50%, -50%); /* Centrez la modale */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .img-header {
@@ -320,7 +321,7 @@ footer {
     }
 
     .contact-div {
-        margin: 0 ;
+        margin: 0;
         text-align: center;
         font-family: 'Poppins', sans-serif;
         font-size: 14px;
@@ -361,9 +362,7 @@ footer {
         text-align: center;
     }
 
-    .row img {
-        width: 50%;
-    }
+
     .photo img {
         width: 250px;
         height: 250px;
@@ -377,13 +376,12 @@ footer {
 
     .filters select {
         margin: 5px 0;
-        /* Ajouter une marge de 10px au-dessus et en dessous de chaque sélecteur */
     }
 
 
     .catalog {
-        width: 200px;
-        height: 200px;
+        width: 318px;
+        height: 279px;
         object-fit: cover;
     }
 
@@ -392,53 +390,78 @@ footer {
         margin-right: auto;
     }
 
-      /* The Modal (background) */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-}
+    /* The Modal (background) */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
     .wpcf7.js {
         padding-right: 40px;
     }
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto;
-    /* 15% from the top and centered */
-    border: 1px solid #888;
-    width: 55%;
-    /* Could be more or less, depending on screen size */
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        /* 15% from the top and centered */
+        border: 1px solid #888;
+        width: 55%;
+        /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    #myModal {
+        transition: opacity 0.3s;
+    }
+
+    #loadmore {
+        background-color: #D8D8D8;
+        height: 50px;
+        width: 272px;
+        outline: none;
+        box-shadow: none;
+        border: none;
+        font-family: 'Space Mono', sans-serif;
+    }
+
+    .load-more {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
 }
 
-/* The Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
 
-#myModal {
-    transition: opacity 0.3s;
-}
 
-}
+
+
+
+
 
 
 
@@ -527,51 +550,69 @@ footer {
     .form-contact img {
         width: 100%;
     }
+
     /* The Modal (background) */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-}
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
     .wpcf7.js {
         padding-right: 40px;
     }
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto;
-    /* 15% from the top and centered */
-    border: 1px solid #888;
-    width: 55%;
-    /* Could be more or less, depending on screen size */
-}
 
-/* The Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        /* 15% from the top and centered */
+        border: 1px solid #888;
+        width: 55%;
+        /* Could be more or less, depending on screen size */
+    }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+    /* The Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
 
-#myModal {
-    transition: opacity 0.3s;
-}
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    #myModal {
+        transition: opacity 0.3s;
+    }
+
+    #loadmore {
+        background-color: #D8D8D8;
+        height: 50px;
+        width: 272px;
+        outline: none;
+        box-shadow: none;
+        border: none;
+        font-family: 'Space Mono', sans-serif;
+    }
+
+    .load-more {
+        text-align: center;
+        padding-bottom: 20px;
+    }
 
 }
 
@@ -603,9 +644,11 @@ footer {
     img.image-post {
         object-fit: cover;
     }
+
     .img-header {
         padding-bottom: 20px;
     }
+
     .entry-content {
         margin-left: auto;
         margin-right: auto;
@@ -688,14 +731,17 @@ footer {
         margin-right: 50px;
     }
 
-     .row {
+    .row {
         display: grid;
-        gap: 20px; /* Espacement entre les images */
+        gap: 20px;
+        /* Espacement entre les images */
     }
 
     .catalog {
-        width: 100%; /* Utilisez toute la largeur disponible dans la colonne */
-        height: auto; /* Permettez à la hauteur de s'adapter automatiquement */
+        width: 100%;
+        /* Utilisez toute la largeur disponible dans la colonne */
+        height: auto;
+        /* Permettez à la hauteur de s'adapter automatiquement */
     }
 
     .photo {
@@ -736,8 +782,8 @@ footer {
     }
 
     .filters {
-       
-    justify-content: space-between;
+
+        justify-content: space-between;
         padding-bottom: 10px;
         display: flex;
         flex-direction: row;
@@ -746,6 +792,7 @@ footer {
     #format-filter {
         margin-left: 10px;
     }
+
     .filterby {
         margin-left: 26%;
     }
@@ -755,18 +802,28 @@ footer {
         margin-right: auto;
     }
 
-   
-    /* Ajoutez ce code CSS à votre fichier style.css de votre thème WordPress */
+
 
     #filtered-posts {
-        column-count: 2;
-        /* Diviser en deux colonnes */
         column-gap: 20px;
-        /* Espacement entre les colonnes */
+    }
+
+    #filtered-posts {
+        margin-left: auto;
+        margin-right: auto;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .post {
-        break-inside: avoid;
+        width: calc(50% - 10px);
+        /* Largeur de chaque post */
+        margin-bottom: 20px;
+        /* Espacement entre les lignes */
+    }
+
+    .post {
         /* Éviter que les articles ne soient coupés en deux colonnes */
         margin-bottom: 20px;
         /* Espacement entre les articles */
@@ -786,7 +843,7 @@ footer {
         background-color: rgb(0, 0, 0);
         background-color: rgba(0, 0, 0, 0.4);
     }
-    
+
     /* Modal Content/Box */
     .modal-content {
         background-color: #fefefe;
@@ -796,7 +853,7 @@ footer {
         width: 42%;
         /* Could be more or less, depending on screen size */
     }
-    
+
     /* The Close Button */
     .close {
         color: #aaa;
@@ -804,18 +861,34 @@ footer {
         font-size: 28px;
         font-weight: bold;
     }
-    
+
     .close:hover,
     .close:focus {
         color: black;
         text-decoration: none;
         cursor: pointer;
     }
-    
+
     #myModal {
         transition: opacity 0.3s;
     }
-}
+
+    
+    #loadmore {
+        background-color: #D8D8D8;
+        height: 50px;
+        width: 272px;
+        outline: none;
+        box-shadow: none;
+        border: none;
+        font-family: 'Space Mono', sans-serif;
+    }
+
+    .load-more {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+ }
 
 
 
@@ -826,7 +899,8 @@ header {
 
 /* CSS pour l'icône d'œil */
 .icon-eye {
-    display: none; /* Masquer par défaut */
+    display: none;
+    /* Masquer par défaut */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -842,7 +916,8 @@ header {
 }
 
 .post-content:hover .icon-eye {
-    display: block; /* Afficher au survol */
+    display: block;
+    /* Afficher au survol */
 }
 
 

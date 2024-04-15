@@ -32,7 +32,7 @@
                     $formats = get_the_terms(get_the_ID(), 'format');
                     if ($formats && !is_wp_error($formats)) {
                         foreach ($formats as $format) {
-                            echo 'FORMAT :' . ' ' . esc_html($format->name);
+                            echo '<p>FORMAT :' . ' ' . esc_html($format->name) . '</p>';
                         }
                     }
                     ?>
