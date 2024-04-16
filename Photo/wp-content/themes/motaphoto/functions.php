@@ -216,11 +216,17 @@ function add_theme_scripts()
 }
 add_action('wp_enqueue_scripts', 'add_theme_scripts');
 
+
 function motaphoto_scripts() {
-    wp_enqueue_script('motaphoto', get_template_directory_uri() . '/load-more.js', array('jquery'), '1.0.0', true);
-    wp_localize_script('motaphoto', 'motaphoto_js', array('ajax_url' => admin_url('admin-ajax.php')));
+    wp_enqueue_script('motaphoto-load-more', get_template_directory_uri() . '/load-more.js', array('jquery'), '1.0.0', true);
+    wp_enqueue_script('motaphoto-category', get_template_directory_uri() . '/category.js', array('jquery'), '1.0.0', true);
+    wp_localize_script('motaphoto-category', 'motaphoto_js', array('ajax_url' => admin_url('admin-ajax.php')));
 }
 add_action('wp_enqueue_scripts', 'motaphoto_scripts');
+
+// Ajouter un gestionnaire d'action pour order_by_format()
+add_action('wp_ajax_order_by_format', 'order_by_format');
+add_action('wp_ajax_nopriv_order_by_format', 'order_by_format'); // Pour les utilisateurs non connectés
 
 
 // Fonction pour charger plus de posts personnalisés
@@ -264,5 +270,118 @@ function load_more_posts() {
 // Action Ajax pour charger plus de posts personnalisés
 add_action('wp_ajax_load_more_posts', 'load_more_posts');
 add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts'); // Pour les utilisateurs non connectés
+
+
+function order_by_category() {
+    $category = isset($_POST['category']) ? $_POST['category'] : '';
+    $offset = isset($_POST['offset']) ? $_POST['offset'] : 0;
+
+    $args = array(
+        'post_type' => 'photos',
+        'posts_per_page' => 8,
+        'offset' => $offset,
+        'orderby' => 'date', // Tri par date
+        'order' => 'DESC', // Ordre décroissant (plus récent d'abord)
+    );
+
+    // Ajoutez des conditions supplémentaires ici pour trier par catégorie si nécessaire
+    if (!empty($category)) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'categorie',
+                'field' => 'slug',
+                'terms' => $category,
+            ),
+        );
+    }
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        $posts = array();
+        while ($query->have_posts()) {
+            $query->the_post();
+            // Construisez votre tableau de données ici
+        }
+        wp_reset_postdata();
+        wp_send_json_success($posts); // Envoyez les données JSON
+    } else {
+        wp_send_json_error('Aucun article trouvé.');
+    }
+}
+add_action('wp_ajax_order_category', 'order_by_category');
+
+   // Action pour gérer les requêtes AJAX pour charger les articles
+add_action('wp_ajax_load_posts', 'load_posts');
+add_action('wp_ajax_nopriv_load_posts', 'load_posts'); // Pour les utilisateurs non connectés
+
+// Fonction pour charger les articles via AJAX
+function load_posts() {
+    // Récupérer les paramètres de la requête AJAX
+    $category = isset($_POST['category']) ? $_POST['category'] : '';
+    $format = isset($_POST['format']) ? $_POST['format'] : '';
+    $sort = isset($_POST['sort']) ? $_POST['sort'] : '';
+    $offset = isset($_POST['offset']) ? $_POST['offset'] : 0;
+
+    // Construire les arguments de la requête WP_Query en fonction des paramètres
+    $args = array(
+        'post_type' => 'photos',
+        'posts_per_page' => 8,
+        'offset' => $offset,
+        'orderby' => 'date', // Par défaut, trier par date
+        'order' => 'DESC' // Par défaut, trier par ordre décroissant (plus récentes d'abord)
+    );
+
+    // Ajouter des conditions de filtrage si des catégories ou des formats sont spécifiés
+    if (!empty($category)) {
+        $args['tax_query'][] = array(
+            'taxonomy' => 'categorie',
+            'field' => 'slug',
+            'terms' => $category,
+        );
+    }
+
+    if (!empty($format)) {
+        $args['tax_query'][] = array(
+            'taxonomy' => 'format',
+            'field' => 'slug',
+            'terms' => $format,
+        );
+    }
+
+    // Modifier les arguments de requête si le tri est spécifié
+    if ($sort === 'oldest') {
+        $args['order'] = 'ASC'; // Changer l'ordre pour trier par les plus anciennes d'abord
+    }
+
+    // Exécuter la requête WP_Query
+    $query = new WP_Query($args);
+
+    // Préparer les données à renvoyer
+    $posts = array();
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            // Collecter les données des articles
+            $post_data = array(
+                'post_title' => get_the_title(),
+                'post_content' => get_the_excerpt(),
+                'post_link' => get_permalink(),
+                // Ajouter d'autres données d'article si nécessaire
+            );
+            $posts[] = $post_data;
+        }
+    }
+
+    // Renvoyer les données des articles au format JSON
+    wp_send_json_success($posts);
+
+    // Assurez-vous de terminer la requête AJAX
+    wp_die();
+}
+     
+                
+
 
 ?>

@@ -11,6 +11,7 @@ Template Name: Accueil
     </div>
 
     <div class="row">
+
         <div class="post-home">
             <div class="filters">
                 <div class="form-filter">
@@ -94,8 +95,7 @@ Template Name: Accueil
                 if ($sortBy === 'oldest') {
                     $args['order'] = 'ASC'; // Changer l'ordre pour trier par les plus anciennes d'abord
                 }
-                // Si on a une catégorie ou un format spécifiés dans la requête, on ajoute ces conditions à nos arguments
-                
+
                 if (!empty($category) && empty($format)) {
                     $args['tax_query'] = array(
                         array(
@@ -141,15 +141,19 @@ Template Name: Accueil
                                 $image_alt = $image['alt'];
                             }
                             ?>
-                         
                             <div class="post-content">
-                            <a href="<?= the_permalink(); ?>" >
-                                    <img class="catalog" src="<?= $image_url; ?>" alt="<?= $image_alt; ?>" /><br />
+                                <a href="<?= the_permalink(); ?>">
+                                    <img class="catalog" src="<?= $image_url; ?>" alt="<?= $image_alt; ?>" />
+                                    <div class="overlay"></div>
+                                    <span class="icon-fullscreen">
+                                        <i class="fa-solid fa-expand "></i>
+                                    </span>
                                     <span class="icon-eye">
-                                        <i class="fa-light fa-eye "></i>                              
+                                        <i class="fa-regular fa-eye fa-2xl"></i>
                                     </span>
                                 </a>
                             </div>
+
 
                         </div>
                         <?php
@@ -163,8 +167,8 @@ Template Name: Accueil
         </div>
     </div>
     <form action="?" method="get" id="filterForm" class="load-more">
-    <button id="loadmore" type="button">Charger plus</button>
-</form>
+        <button id="loadmore" type="button">Charger plus</button>
+    </form>
 
 </div>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/scripts.js"></script>
@@ -173,23 +177,3 @@ Template Name: Accueil
 <footer>
     <?php get_footer(); ?>
 </footer>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const lightboxLinks = document.querySelectorAll('.lightbox-link');
-        lightboxLinks.forEach(function(link) {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                const imageUrl = this.getAttribute('href');
-                const lightbox = document.createElement('div');
-                lightbox.className = 'lightbox';
-                lightbox.innerHTML = '<img src="' + imageUrl + '" />';
-                document.body.appendChild(lightbox);
-
-                lightbox.addEventListener('click', function() {
-                    this.remove();
-                });
-            });
-        });
-    });
-</script>
