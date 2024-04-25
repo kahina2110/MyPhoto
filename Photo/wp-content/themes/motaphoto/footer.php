@@ -1,4 +1,4 @@
-<footer>
+
         <?php
         wp_footer();
         wp_nav_menu(array(
@@ -6,4 +6,3 @@
             'menu_class' => 'footer-menu', // classe CSS pour le menu
         ));
         ?>
-</footer>

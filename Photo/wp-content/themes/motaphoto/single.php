@@ -42,7 +42,7 @@
                     <div class="contact-div">
                         <p>Cette photo vous intéresse ?</p>
                         <div id="menu-item-157" class="contact-btn">
-                            <button href="#">Contact</button>
+                            <button  id="contact" href="#">Contact</button>
                         </div>
                     </div>
                 </div>
@@ -80,6 +80,38 @@
     <h4>VOUS AIMEREZ AUSSI</h4>
 </div>
 
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/modal.js"></script>
 <?php get_template_part('/page-modal')?>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var modal = document.getElementById('myModal');
+    var btn = document.getElementById("contact");
+    var span = document.getElementsByClassName("close")[0];
+
+    function closeModalWithFade() {
+        modal.style.opacity = "0";
+        setTimeout(function() {
+            modal.style.display = "none";
+            modal.style.opacity = "1";
+        }, 300);
+    }
+
+    btn.onclick = function() {
+        modal.style.display = "block";
+        // Pré-remplir le champ dans le formulaire Contact Form 7
+        var refPhoto = "<?php the_field('reference'); ?>";
+        document.getElementById("ref-photo").setAttribute("value", refPhoto);
+    }
+
+    span.onclick = function() {
+        closeModalWithFade();
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModalWithFade();
+        }
+    }
+});
+
+</script>
 <?php get_footer(); ?>

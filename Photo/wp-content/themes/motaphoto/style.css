@@ -62,6 +62,11 @@ form {
     color: #313144;
 }
 
+.form-contact {
+
+    background-color: #fff;
+}
+
 .wpcf7-form.init {
     width: 263px;
 }
@@ -104,7 +109,10 @@ textarea {
     box-shadow: none;
 }
 
-
+#ref-photo {
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+}
 .post-home,
 .test {
     margin-left: auto;
@@ -254,9 +262,6 @@ footer {
     .container {
         justify-content: center;
     }
-
-   
-
     .entry-content {
         padding-top: 20px;
         display: flex;
@@ -395,12 +400,10 @@ footer {
         display: none;
         position: fixed;
         z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
+        left: 50%;
+        top: 78%;
         margin-left: auto;
         margin-right: auto;
-        overflow: auto;
         background-color: rgb(0, 0, 0);
         background-color: rgba(0, 0, 0, 0.4);
     }
@@ -409,14 +412,21 @@ footer {
         padding-right: 40px;
     }
 
+    .form-contact input {
+
+        width: 280px;
+    }
+
+    .form-contact img {
+        max-width: 100%;
+    }
+
     /* Modal Content/Box */
     .modal-content {
         background-color: #fefefe;
         margin: 5% auto;
-        /* 15% from the top and centered */
         border: 1px solid #888;
         width: 55%;
-        /* Could be more or less, depending on screen size */
     }
 
     /* The Close Button */
@@ -451,6 +461,110 @@ footer {
     .load-more {
         text-align: center;
         padding-bottom: 20px;
+    }
+    .icon-eye {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        padding: 5px;
+        cursor: pointer;
+        color: #fff;
+    }
+    
+    .post-content {
+        position: relative;
+    }
+    
+    .post-content:hover .icon-eye {
+        display: block;
+    }
+    
+  
+    
+    .icon-eye,
+    .icon-fullscreen {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .post-content:hover .icon-eye,
+    .post-content:hover .icon-fullscreen {
+        opacity: 1;
+    }
+    
+    .icon-eye {
+        color: #fff;
+        padding: 55px;
+        border-radius: 50%;
+    }
+    
+    .icon-fullscreen {
+        color: #fff;
+        padding: 5px;
+        border-radius: 50%;
+        margin-left: 20px; 
+        top: 25px;
+    }
+    
+    
+    /* Conteneur pour l'image avec position relative */
+    .post-content {
+        position: relative;
+    }
+    
+    /* Overlay noir */
+    .post-content .overlay {
+        position: absolute;
+        top: 0;
+        left: 7.6%;
+        width: 318px;
+        height: 279px;
+        background-color: rgba(0, 0, 0, 0.6); 
+        opacity: 0; 
+        transition: opacity 0.3s ease;
+    }
+    
+    .post-content:hover .overlay {
+        opacity: 1;
+    }
+    
+    .post-content:hover .icon-fullscreen,
+    .post-content:hover .icon-eye {
+        opacity: 1;
+    }
+    
+    
+    .post-content .icon-eye {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0; 
+        transition: opacity 0.3s ease; 
+        z-index: 1; 
+    }
+    
+    .fa-expand{
+        top: 11px;
+    }
+    
+    .fa-expand::before {
+        background-color: #000;
+        padding: 5px;
+        border-radius: 50%;
+    }
+    .post-content .icon-eye i {
+        font-size: 2rem;
+    }
+    .post-content .icon-fullscreen i {
+        margin-left: 37rem;
     }
 
 }
@@ -574,10 +688,8 @@ footer {
     .modal-content {
         background-color: #fefefe;
         margin: 5% auto;
-        /* 15% from the top and centered */
         border: 1px solid #888;
         width: 55%;
-        /* Could be more or less, depending on screen size */
     }
 
     /* The Close Button */
@@ -613,6 +725,114 @@ footer {
         text-align: center;
         padding-bottom: 20px;
     }
+
+    .load-more {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+    .icon-eye {
+        display: none;
+        position: absolute;
+        top: 50%;
+     
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        padding: 5px;
+        cursor: pointer;
+        color: #fff;
+    }
+    
+    .post-content {
+        position: relative;
+    }
+    
+    .post-content:hover .icon-eye {
+        display: block;
+    }
+    
+   
+    .icon-eye,
+    .icon-fullscreen {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .post-content:hover .icon-eye,
+    .post-content:hover .icon-fullscreen {
+        opacity: 1;
+    }
+    
+    .icon-eye {
+        color: #fff;
+        padding: 55px;
+        border-radius: 50%;
+    }
+    
+    .icon-fullscreen {
+        color: #fff;
+        padding: 5px;
+        border-radius: 50%;
+        margin-left: 20px; 
+        top: 25px;
+        left: 32%;
+    }
+    
+    .post-content {
+        position: relative;
+    }
+    
+    /* Overlay noir */
+    .post-content .overlay {
+        position: absolute;
+        top: 0;
+        left: 25.3%;
+        width: 400px;
+        height: 400px;
+        background-color: rgba(0, 0, 0, 0.6); 
+        opacity: 0; 
+        transition: opacity 0.3s ease;
+    }
+    
+    .post-content:hover .overlay {
+        opacity: 1;
+    }
+    
+    .post-content:hover .icon-fullscreen,
+    .post-content:hover .icon-eye {
+        opacity: 1;
+    }
+    
+    
+    .post-content .icon-eye {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0; 
+        transition: opacity 0.3s ease; 
+        z-index: 1; 
+    }
+    
+    .fa-expand{
+        top: 11px;
+    }
+    
+    .fa-expand::before {
+        background-color: #000;
+        padding: 5px;
+        border-radius: 50%;
+    }
+    .post-content .icon-eye i {
+        font-size: 2rem;
+    }
+    .post-content .icon-fullscreen i {
+        margin-left: 37rem;
+    }
+
 
 }
 
@@ -739,9 +959,7 @@ footer {
 
     .catalog {
         width: 100%;
-        /* Utilisez toute la largeur disponible dans la colonne */
         height: auto;
-        /* Permettez à la hauteur de s'adapter automatiquement */
     }
 
     .photo {
@@ -818,15 +1036,11 @@ footer {
 
     .post {
         width: calc(50% - 10px);
-        /* Largeur de chaque post */
         margin-bottom: 20px;
-        /* Espacement entre les lignes */
     }
 
     .post {
-        /* Éviter que les articles ne soient coupés en deux colonnes */
         margin-bottom: 20px;
-        /* Espacement entre les articles */
     }
 
     /* The Modal (background) */
@@ -846,12 +1060,9 @@ footer {
 
     /* Modal Content/Box */
     .modal-content {
-        background-color: #fefefe;
         margin: 5% auto;
-        /* 15% from the top and centered */
         border: 1px solid #888;
-        width: 42%;
-        /* Could be more or less, depending on screen size */
+        width: 38%;
     }
 
     /* The Close Button */
@@ -888,119 +1099,170 @@ footer {
         text-align: center;
         padding-bottom: 20px;
     }
+    .icon-eye {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        padding: 5px;
+        cursor: pointer;
+        color: #fff;
+    }
+    
+    .post-content {
+        position: relative;
+    }
+    
+    .post-content:hover .icon-eye {
+        display: block;
+    }
+    
+  
+    
+    .icon-eye,
+    .icon-fullscreen {
+        position: absolute;
+        top: 50%;
+        left: 95%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .post-content:hover .icon-eye,
+    .post-content:hover .icon-fullscreen {
+        opacity: 1;
+    }
+    
+    .icon-eye {
+        color: #fff;
+        padding: 55px;
+        border-radius: 50%;
+    }
+    
+    .icon-fullscreen {
+        color: #fff;
+        padding: 5px;
+        border-radius: 50%;
+        margin-left: 20px; 
+        top: 25px;
+    }
+    
+    
+    /* Conteneur pour l'image avec position relative */
+    .post-content {
+        position: relative;
+    }
+    
+    /* Overlay noir */
+    .post-content .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 564px;
+        height: 495px;
+        background-color: rgba(0, 0, 0, 0.6); 
+        opacity: 0; 
+        transition: opacity 0.3s ease;
+    }
+    
+    .post-content:hover .overlay {
+        opacity: 1;
+    }
+    
+    .post-content:hover .icon-fullscreen,
+    .post-content:hover .icon-eye {
+        opacity: 1;
+    }
+    
+    
+    .post-content .icon-eye {
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        transform: translate(-50%, -50%);
+        opacity: 0; 
+        transition: opacity 0.3s ease; 
+        z-index: 1; 
+    }
+    
+    .fa-expand{
+        top: 11px;
+    }
+    
+    .fa-expand::before {
+        background-color: #000;
+        padding: 5px;
+        border-radius: 50%;
+    }
+    .post-content .icon-eye i {
+        font-size: 2rem;
+    }
+    .post-content .icon-fullscreen i {
+        margin-left: 32rem;
+    }
  }
 
 header {
     justify-content: space-around;
 }
 
-.icon-eye {
+.lightbox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
     display: none;
+  }
+  
+  .lightbox-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 50%;
-    padding: 5px;
-    cursor: pointer;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .lightbox-photo {
+    width: 100%;
+    height: auto;
+  }
+  
+  .lightbox-info {
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
     color: #fff;
-}
-
-.post-content {
-    position: relative;
-}
-
-.post-content:hover .icon-eye {
-    display: block;
-}
-
-.lightbox__container {
+  }
+  
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0 50px;
-}
-
-.icon-eye,
-.icon-fullscreen {
-    position: absolute;
-    top: 50%;
-    left: 95%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.post-content:hover .icon-eye,
-.post-content:hover .icon-fullscreen {
-    opacity: 1;
-}
-
-.icon-eye {
+    justify-content: space-between;
+    padding: 0 10px;
     color: #fff;
-    padding: 55px;
-    border-radius: 50%;
-}
-
-.icon-fullscreen {
-    color: #fff;
+  }
+  
+  .lightbox-prev,
+  .lightbox-next {
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 5px;
     border-radius: 50%;
-    margin-left: 20px; 
-    top: 25px;
-}
-
-
-/* Conteneur pour l'image avec position relative */
-.post-content {
-    position: relative;
-}
-
-/* Overlay noir */
-.post-content .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 564px;
-    height: 495px;
-    background-color: rgba(0, 0, 0, 0.6); 
-    opacity: 0; 
-    transition: opacity 0.3s ease;
-}
-
-.post-content:hover .overlay {
-    opacity: 1;
-}
-
-.post-content:hover .icon-fullscreen,
-.post-content:hover .icon-eye {
-    opacity: 1;
-}
-
-
-.post-content .icon-eye {
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    transform: translate(-50%, -50%);
-    opacity: 0; 
-    transition: opacity 0.3s ease; 
-    z-index: 1; 
-}
-
-.fa-expand{
-    top: 11px;
-}
-
-.fa-expand::before {
-    background-color: #000;
-    padding: 5px;
-    border-radius: 50%;
-}
-.post-content .icon-eye i {
-    font-size: 2rem;
-}
-.post-content .icon-fullscreen i {
-    margin-left: 32rem;
-}
+  }
+  
+  .lightbox-prev:hover,
+  .lightbox-next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }

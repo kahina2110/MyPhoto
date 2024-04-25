@@ -1,33 +1,55 @@
-document.addEventListener('DOMContentLoaded', function() {
-    let offset = 8; 
+document.addEventListener('DOMContentLoaded', () => {
+    const categoryFilterForm = document.querySelector('#category-filter-form');
+    const filteredPosts = document.querySelector('#filtered-posts');
 
-    document.querySelector('#category-filter').addEventListener('change', function(event) {
-        event.preventDefault(); 
-        
-        let formData = new FormData();
+    categoryFilterForm.addEventListener('change', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(categoryFilterForm);
         formData.append('action', 'order_by_category');
-        formData.append('offset', offset); 
-        fetch(motaphoto_js.ajax_url, {
-            method: 'POST',
-            body: formData,
-        })
-        .then(function(response) {
+
+        try {
+            const response = await fetch(motaphoto_category_js.ajax_url, {
+                method: 'POST',
+                body: formData,
+            });
+
             if (!response.ok) {
                 throw new Error('Network response error.');
             }
-            return response.json();
-        })
-        .then(function(data) {
+
+            const data = await response.json();
+
             if (data && data.data && Array.isArray(data.data)) {
-                data.data.forEach(function(post) {
-                    document.querySelector('#filtered-posts').insertAdjacentHTML('beforeend', '<div class="post"><div class="post-content"><a href="' + post.post_link + '"><img class="catalog" src="' + post.image_src + '" alt="' + post.image_alt + '" /><br /><span class="icon-eye"><i class="fa-light fa-eye "></i></span></a></div></div>');
+                console.log(data);
+                filteredPosts.innerHTML = ''; 
+                data.data.forEach(post => {
+                    const postHTML = `
+                     
+                            <div id="clickMe" class="post-content">
+                            <img class="catalog" src="${post.image_src}" alt="${post.image_alt}" /><br />
+                            <div class="overlay"></div>
+                            <span class="icon-fullscreen">
+                            <i class="fa-solid fa-expand "></i>
+                            </span>
+                            <a href="${post.post_link}">
+                            <span class="icon-eye">
+                            <i class="fa-regular fa-eye fa-2xl"></i>
+                        </span>
+                            </a>
+
+                       
+                    </div>`;
+                        
+                    filteredPosts.insertAdjacentHTML('beforeend', postHTML);
                 });
             } else {
                 console.error('Invalid data format received from server.');
+                filteredPosts.innerHTML = '<p>Aucun article trouvé.</p>';
             }
-        })
-        .catch(function(error) {
+        } catch (error) {
             console.error('There was a problem with the fetch operation: ', error);
-        });
+            filteredPosts.innerHTML = '<p>Une erreur s\'est produite lors du chargement des articles.</p>';
+        }
     });
 });
