@@ -10,31 +10,51 @@ document.addEventListener('DOMContentLoaded', function() {
         let formData = new FormData();
         formData.append('action', 'load_more_posts');
         formData.append('offset', offset); 
-        formData.append('category', categoryFilter); // Ajout de la catégorie sélectionnée
+        formData.append('category', categoryFilter); 
 
-        fetch(motaphoto_loadmore_js.ajax_url, {
-            method: 'POST',
-            body: formData,
-        })
-        .then(function(response) {
-            if (!response.ok) {
-                throw new Error('Network response error.');
-            }
-            return response.json();
-        })
-        .then(function(data) {
-            if (data && data.data && Array.isArray(data.data)) {
-                totalPosts = data.total_posts; 
-                data.data.forEach(function(post) {
-                    document.querySelector('#filtered-posts').insertAdjacentHTML('beforeend', '<div class="post"><div class="post-content"><img class="catalog" src="' + post.image_src + '" alt="' + post.image_alt + '" /><br /><div class="overlay"></div> <span class="icon-fullscreen"> <i class="fa-solid fa-expand "></i></span><span class="icon-eye"><i class="fa-regular fa-eye fa-2xl"></i></span></div>');
-                });
-                offset += 8;
-            } else {
-                console.error('Invalid data format received from server.');
-            }
-        })
-        .catch(function(error) {
-            console.error('There was a problem with the fetch operation: ', error);
-        });
+        try {
+            console.log(motaphoto_js);
+            fetch(motaphoto_js.ajax_url, {
+                method: 'POST',
+                body: formData,
+            })
+            .then(function(response) {
+                if (!response.ok) {
+                    throw new Error('Network response error.');
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                if (data && data.data && Array.isArray(data.data)) {
+                    totalPosts = data.total_posts; 
+                    data.data.forEach(function(post) {
+                        document.querySelector('#filtered-posts').insertAdjacentHTML('beforeend',  `
+                        <div class="post">
+                            <div class="post-content">
+                                <img class="catalog" src="${post.image_src}" alt="${post.image_alt}" /><br />
+                                <div class="overlay"></div>
+                                <span class="icon-fullscreen">
+                                    <i class="fa-solid fa-expand "></i>
+                                </span>
+                                <a href="${post.post_link}">
+                                    <span class="icon-eye">
+                                        <i class="fa-regular fa-eye fa-2xl"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>`);
+                    });
+                    offset += 8;
+                } else {
+                    console.log(data);
+                    console.error('Invalid data format received from server.');
+                }
+            })
+            .catch(function(error) {
+                console.error('There was a problem with the fetch operation: ', error);
+            });
+        } catch (error) {
+            console.error('An error occurred: ', error);
+        }
     });
 });

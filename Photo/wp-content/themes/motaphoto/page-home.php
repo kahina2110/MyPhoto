@@ -36,10 +36,11 @@ Template Name: Accueil
                         </select>
                     </form>
 
+               
 
-                    <form method="get" class="filters">
-                        <select name="format" id="format-filter" onchange="this.form.submit()">
-                            <option value="">FORMATS</option>
+                    <form method="post" id="format-filter-form" class="filters" action="?">
+                        <select name="format" id="format-filter" >
+                        <option value="tous-les-formats" <?php echo isset($_GET['format']) && $_GET['format'] === 'tous-les-formats' ? 'selected' : ''; ?>>FORMATS</option>
                             <?php
                             $formats = get_terms(
                                 array(
@@ -54,35 +55,25 @@ Template Name: Accueil
                         </select>
                     </form>
                 </div>
-                <select class="filterby">
-                    <option value="" selected>TRIER PAR</option>
-                    <option value="">PLUS RÉCENTES</option>
-                    <option value="">PLUS ANCIENNES</option>
-                </select>
+                
+                <form method="POST" action="?" id="date-format-filter">
+                    <select class="filterby">
+                        <option value="" selected>TRIER PAR</option>
+                        <option value="">PLUS RÉCENTES</option>
+                        <option value="">PLUS ANCIENNES</option>
+                    </select>
+                </form>
             </div>
 
             <div id="filtered-posts">
                 <?php
                 $category = isset($_GET['category']) ? $_GET['category'] : '';
-                $format = isset($_GET['format']) ? $_GET['format'] : '';
+                $format = isset($_POST['format']) ? $_POST['format'] : '';
 
                 $args = array(
                     'post_type' => 'photos',
                     'posts_per_page' => 8,
                 );
-
-                $sortBy = isset($_GET['sort']) ? $_GET['sort'] : '';
-
-                $args = array(
-                    'post_type' => 'photos',
-                    'posts_per_page' => 8,
-                    'orderby' => 'date', // Par défaut, trier par date
-                    'order' => 'DESC' // Par défaut, trier par ordre décroissant (plus récentes d'abord)
-                );
-
-                if ($sortBy === 'oldest') {
-                    $args['order'] = 'ASC'; // Changer l'ordre pour trier par les plus anciennes d'abord
-                }
 
                 if (!empty($category)) {
                     $args['tax_query'] = array(
@@ -90,32 +81,18 @@ Template Name: Accueil
                             'taxonomy' => 'categorie',
                             'field' => 'slug',
                             'terms' => $category,
-                        ),
+                        )
                     );
-                }elseif (!empty($category) && !empty($format)) {
+                }
+
+                if (!empty($format)) {
                     $args['tax_query'] = array(
-                        'relation' => 'OR',
-                        array(
-                            'taxonomy' => 'categorie',
-                            'field' => 'slug',
-                            'terms' => $category,
-                        ),
                         array(
                             'taxonomy' => 'format',
                             'field' => 'slug',
                             'terms' => $format,
-                        ),
+                        )
                     );
-                }
-
-                // Si "Toutes les catégories" est sélectionnée, ne pas appliquer de filtre de catégorie
-                // Si "Tous les formats" est sélectionné, ne pas appliquer de filtre de format
-                if ($category === 'toutes-les-categories') {
-                    unset($args['tax_query']);
-                }
-
-                if ($format === 'tous-les-formats') {
-                    unset($args['tax_query']);
                 }
 
                 $query = new WP_Query($args);
@@ -144,11 +121,7 @@ Template Name: Accueil
                                     </span>
                                 </a>
                             </div>
-
-
                         </div>
-                             
-                    
                         <?php
                     endwhile;
                     wp_reset_postdata();
@@ -156,24 +129,15 @@ Template Name: Accueil
                     echo 'Aucun article trouvé.';
                 endif;
                 ?>
+
             </div>
         </div>
     </div>
-    <form action="?" method="get" id="filterForm" class="load-more">
+    <form action="?" method="POST" id="filterForm" class="load-more">
         <button id="loadmore" type="button">Charger plus</button>
     </form>
 
-    <div class="lightbox-overlay">
-  <div class="lightbox-content">
-    <img class="lightbox-photo" src="" alt="">
-    <figcaption class="lightbox-caption"></figcaption>
-    <div class="lightbox-nav">
-      <button class="lightbox-prev" data-index="0">&larr;</button>
-      <button class="lightbox-next" data-index="0">&rarr;</button>
-    </div>
-    <button class="lightbox-close">&times;</button>
-  </div>
-</div>
+
 </div>
 <script src="<?php echo get_template_directory_uri(); ?>/lightbox.js"></script>
 
