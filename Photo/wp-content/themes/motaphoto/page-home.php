@@ -56,11 +56,12 @@ Template Name: Accueil
                     </form>
                 </div>
                 
-                <form method="POST" action="?" id="date-format-filter">
-                    <select class="filterby">
+               
+                <form method="POST" action="#" id="date-filter-form">
+                    <select class="filterby" name="date"> 
                         <option value="" selected>TRIER PAR</option>
-                        <option value="">PLUS RÉCENTES</option>
-                        <option value="">PLUS ANCIENNES</option>
+                        <option value="DESC">PLUS RÉCENTES</option> 
+                        <option value="ASC">PLUS ANCIENNES</option> 
                     </select>
                 </form>
             </div>

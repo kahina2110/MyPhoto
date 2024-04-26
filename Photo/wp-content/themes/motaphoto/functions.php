@@ -225,6 +225,8 @@ function motaphoto_scripts() {
         wp_localize_script('motaphoto-category', 'motaphoto_category_js', array('ajax_url' => admin_url('admin-ajax.php')));
         wp_enqueue_script('motaphoto-format', get_template_directory_uri() . '/format.js', array('jquery'), '1.0.0', true);
         wp_localize_script('motaphoto-format', 'motaphoto_format_js', array('ajax_url' => admin_url('admin-ajax.php')));
+        wp_enqueue_script('motaphoto-date', get_template_directory_uri() . '/date.js', array('jquery'), '1.0.0', true);
+        wp_localize_script('motaphoto-date', 'motaphoto_date_js', array('ajax_url' => admin_url('admin-ajax.php')));
     }
 }
 add_action('wp_enqueue_scripts', 'motaphoto_scripts');
@@ -381,6 +383,55 @@ add_action('wp_ajax_nopriv_order_by_category', 'order_by_category');
     }
     add_action('wp_ajax_order_by_format', 'order_by_format');
     add_action('wp_ajax_nopriv_order_by_format', 'order_by_format');
+    
+
+
+
+
+    function order_by_date() {
+        $date = isset($_POST['date']) ? $_POST['date'] : '';
+    
+        $args = array(
+            'post_type' => 'photos',
+            'posts_per_page' => 8,
+            'orderby' => 'date',
+            'order' => 'DESC',
+        );
+    
+        if (!empty($date)) {
+            if ($date === 'DESC' || $date === 'ASC') {
+                $args['order'] = $date;
+            } 
+        }
+    
+        $query = new WP_Query($args);
+        $posts = array();
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                $image = get_field('image');
+                if ($image) {
+                    $image_url = $image['url'];
+                    $image_alt = $image['alt'];
+                }
+                $post_data = array(
+                    'post_title' => get_the_title(),
+                    'post_link' => get_permalink(),
+                    'image_src' => $image_url, 
+                    'image_alt' => $image_alt,
+                    'post_date' => get_the_date('d/m/Y'),
+                );
+    
+                $posts[] = $post_data;
+            }
+            wp_send_json_success($posts);
+            wp_reset_postdata();
+        } else {
+            wp_send_json_error('Aucun article trouvé.');
+        }
+    }
+    add_action('wp_ajax_order_by_date', 'order_by_date');
+    add_action('wp_ajax_nopriv_order_by_date', 'order_by_date');
     
 
 
