@@ -217,7 +217,7 @@ function add_theme_scripts()
 add_action('wp_enqueue_scripts', 'add_theme_scripts');
 
 function motaphoto_scripts() {
-    if(is_front_page()){
+    
 
         wp_enqueue_script('motaphoto-load-more', get_template_directory_uri() . '/load-more.js', array('jquery'), '1.0.0', true);
         wp_localize_script('motaphoto-load-more', 'motaphoto_js', array('ajax_url' => admin_url('admin-ajax.php')));
@@ -228,7 +228,7 @@ function motaphoto_scripts() {
         wp_enqueue_script('motaphoto-date', get_template_directory_uri() . '/date.js', array('jquery'), '1.0.0', true);
         wp_localize_script('motaphoto-date', 'motaphoto_date_js', array('ajax_url' => admin_url('admin-ajax.php')));
     }
-}
+
 add_action('wp_enqueue_scripts', 'motaphoto_scripts');
 
 

@@ -24,21 +24,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(data);
                 filteredPosts.innerHTML = ''; 
                 data.data.forEach(post => {
-                    const postHTML = `
-                     
-                            <div id="clickMe" class="post-content">
+                    const postHTML =  `
+                    <div class="post">
+                        <div class="post-content">
                             <img class="catalog" src="${post.image_src}" alt="${post.image_alt}" /><br />
                             <div class="overlay"></div>
                             <span class="icon-fullscreen">
-                            <i class="fa-solid fa-expand "></i>
+                                <i class="fa-solid fa-expand "></i>
                             </span>
                             <a href="${post.post_link}">
-                            <span class="icon-eye">
-                            <i class="fa-regular fa-eye fa-2xl"></i>
-                        </span>
+                                <span class="icon-eye">
+                                    <i class="fa-regular fa-eye fa-2xl"></i>
+                                </span>
                             </a>
-
-                       
+                        </div>
                     </div>`;
                         
                     filteredPosts.insertAdjacentHTML('beforeend', postHTML);

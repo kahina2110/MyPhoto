@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Votre code JavaScript ici
     var modal = document.getElementById('myModal');
     var btn = document.getElementById("menu-item-157");
     var span = document.getElementsByClassName("close")[0];
