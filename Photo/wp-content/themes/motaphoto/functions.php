@@ -313,7 +313,8 @@ function order_by_category()
         'order' => 'DESC',
     );
 
-    if (!empty($category)) {
+    if ($category === 'toutes les catégories') {
+    } elseif (!empty($category)) {
         $args['tax_query'] = array(
             array(
                 'taxonomy' => 'categorie',
@@ -322,6 +323,7 @@ function order_by_category()
             ),
         );
     }
+
     $query = new WP_Query($args);
     $posts = array();
     if ($query->have_posts()) {
@@ -342,7 +344,7 @@ function order_by_category()
                 'image_src' => $image_url,
                 'image_alt' => $image_alt,
                 'title' => $title,
-                'category' => $categories[0]->name,
+                'category' => isset($categories[0]) ? $categories[0]->name : '', // Vérifier si la catégorie existe
             );
 
             $posts[] = $post_data;
@@ -376,7 +378,8 @@ function order_by_format()
         'order' => 'DESC',
     );
 
-    if (!empty($format)) {
+    if ($format === 'tous les formats') {
+    } elseif (!empty($format)) {
         $args['tax_query'] = array(
             array(
                 'taxonomy' => 'format',
@@ -484,11 +487,13 @@ function load_posts()
         'order' => 'DESC'
     );
     
-    if (!empty($category)) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'categorie',
-            'field' => 'slug',
-            'terms' => $category,
+    if (empty($category)) {
+        $args = array(
+            'post_type' => 'photos',
+            'posts_per_page' => 8,
+            'offset' => $offset,
+            'orderby' => 'date',
+            'order' => 'DESC'
         );
     }
 

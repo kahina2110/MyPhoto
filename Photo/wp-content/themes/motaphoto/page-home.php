@@ -19,7 +19,7 @@ Template Name: Accueil
 
                     <form id="category-filter-form" method="post" action="?">
                         <select name="category" id="category-filter">
-                            <option value="toutes-les-categories" <?php echo isset($_GET['category']) && $_GET['category'] === 'toutes-les-categories' ? 'selected' : ''; ?>>CATÉGORIES</option>
+                            <option value="toutes les catégories" <?php echo isset($_GET['category']) && $_GET['category'] === 'toutes les catégories' ? 'selected' : ''; ?>>CATÉGORIES</option>
                             <?php
                             $categories = get_terms(
                                 array(
@@ -38,7 +38,7 @@ Template Name: Accueil
 
                     <form method="post" id="format-filter-form" class="filters" action="?">
                         <select name="format" id="format-filter">
-                            <option value="tous-les-formats" <?php echo isset($_GET['format']) && $_GET['format'] === 'tous-les-formats' ? 'selected' : ''; ?>>FORMATS</option>
+                            <option value="tous les formats" <?php echo isset($_GET['format']) && $_GET['format'] === 'tous les formats' ? 'selected' : ''; ?>>FORMATS</option>
                             <?php
                             $formats = get_terms(
                                 array(
