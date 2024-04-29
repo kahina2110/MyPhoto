@@ -126,7 +126,7 @@ add_action('init', 'charger_modele_page_personnalise');
 function tutsplus_burger_menu_scripts()
 {
 
-    wp_enqueue_script('burger-menu-script', get_stylesheet_directory_uri() . '/burger-menu.js', array('jquery'));
+    wp_enqueue_script('burger-menu-script', get_stylesheet_directory_uri() . '/js/burger-menu.js', array('jquery'));
 
 }
 add_action('wp_enqueue_scripts', 'tutsplus_burger_menu_scripts');
@@ -208,31 +208,38 @@ add_action('init', 'cptui_register_my_taxes_format');
 
 function add_theme_scripts()
 {
-    wp_enqueue_script('menu', get_template_directory_uri() . '/burger-menu.js', array(), '1.0', true);
-    wp_enqueue_script('modal', get_template_directory_uri() . '/modal.js', array(), '1.0', true);
-    wp_enqueue_script('modal', get_template_directory_uri() . '/contact-single.js', array(), '1.0', true);
-    wp_enqueue_script('scripts', get_template_directory_uri() . '/scripts.js', array(), '1.0');
-    wp_enqueue_script('lightbox', get_template_directory_uri() . '/lightbox.js', array(), '1.0');
+    wp_enqueue_script('menu', get_template_directory_uri() . '/js/burger-menu.js', array(), '1.0', true);
+    wp_enqueue_script('modal', get_template_directory_uri() . '/js/modal.js', array(), '1.0', true);
+    wp_enqueue_script('modal', get_template_directory_uri() . '/js/contact-single.js', array(), '1.0', true);
+    wp_enqueue_script('scripts', get_template_directory_uri() . '/js/scripts.js', array(), '1.0');
+    if(is_front_page()){
+
+        wp_enqueue_script('lightbox', get_template_directory_uri() . '/js/lightbox.js', array(), '1.0');
+    }
 }
 add_action('wp_enqueue_scripts', 'add_theme_scripts');
 
-function motaphoto_scripts() {
-    
+function motaphoto_scripts()
+{
 
-        wp_enqueue_script('motaphoto-load-more', get_template_directory_uri() . '/load-more.js', array('jquery'), '1.0.0', true);
-        wp_localize_script('motaphoto-load-more', 'motaphoto_js', array('ajax_url' => admin_url('admin-ajax.php')));
-        wp_enqueue_script('motaphoto-category', get_template_directory_uri() . '/category.js', array('jquery'), '1.0.0', true);
-        wp_localize_script('motaphoto-category', 'motaphoto_category_js', array('ajax_url' => admin_url('admin-ajax.php')));
-        wp_enqueue_script('motaphoto-format', get_template_directory_uri() . '/format.js', array('jquery'), '1.0.0', true);
-        wp_localize_script('motaphoto-format', 'motaphoto_format_js', array('ajax_url' => admin_url('admin-ajax.php')));
-        wp_enqueue_script('motaphoto-date', get_template_directory_uri() . '/date.js', array('jquery'), '1.0.0', true);
-        wp_localize_script('motaphoto-date', 'motaphoto_date_js', array('ajax_url' => admin_url('admin-ajax.php')));
-    }
+if(is_front_page()){
+
+    wp_enqueue_script('motaphoto-load-more', get_template_directory_uri() . '/js/load-more.js', array('jquery'), '1.0.0', true);
+    wp_localize_script('motaphoto-load-more', 'motaphoto_js', array('ajax_url' => admin_url('admin-ajax.php')));
+    wp_enqueue_script('motaphoto-category', get_template_directory_uri() . '/js/category.js', array('jquery'), '1.0.0', true);
+    wp_localize_script('motaphoto-category', 'motaphoto_category_js', array('ajax_url' => admin_url('admin-ajax.php')));
+    wp_enqueue_script('motaphoto-format', get_template_directory_uri() . '/js/format.js', array('jquery'), '1.0.0', true);
+    wp_localize_script('motaphoto-format', 'motaphoto_format_js', array('ajax_url' => admin_url('admin-ajax.php')));
+    wp_enqueue_script('motaphoto-date', get_template_directory_uri() . '/js/date.js', array('jquery'), '1.0.0', true);
+    wp_localize_script('motaphoto-date', 'motaphoto_date_js', array('ajax_url' => admin_url('admin-ajax.php')));
+}
+}
 
 add_action('wp_enqueue_scripts', 'motaphoto_scripts');
 
 
-function load_more_posts() {
+function load_more_posts()
+{
     $offset = isset($_POST['offset']) ? $_POST['offset'] : 0;
 
     $args = array(
@@ -249,6 +256,11 @@ function load_more_posts() {
         while ($query->have_posts()) {
             $query->the_post();
             $image = get_field('image');
+            $title = get_field('title');
+            $format = get_the_terms(get_the_ID(), 'format');
+            $format = $format[0]->name;
+            $category = get_the_terms(get_the_ID(), 'categorie');
+            $category = $category[0]->name;
             if ($image) {
                 $image_url = $image['url'];
                 $image_alt = $image['alt'];
@@ -257,8 +269,11 @@ function load_more_posts() {
                 'post_title' => get_the_title(),
                 'post_content' => get_the_excerpt(),
                 'post_link' => get_permalink(),
-                'image_src' => $image_url, 
-            'image_alt' => $image_alt,
+                'image_src' => $image_url,
+                'image_alt' => $image_alt,
+                'format' => $format,
+                'category' => $category,
+                'title' => $title
             );
 
             $posts[] = $post_data;
@@ -277,7 +292,8 @@ add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts'); // Pour les uti
 
 
 
-function order_by_category() {
+function order_by_category()
+{
     $category = isset($_POST['category']) ? $_POST['category'] : '';
     $offset = isset($_POST['offset']) ? $_POST['offset'] : 0;
 
@@ -308,12 +324,17 @@ function order_by_category() {
                 $image_url = $image['url'];
                 $image_alt = $image['alt'];
             }
+            $title = get_field('title');
+            $categories = get_the_terms(get_the_ID(), 'categorie');
+
             $post_data = array(
                 'post_title' => get_the_title(),
                 'post_content' => get_the_excerpt(),
                 'post_link' => get_permalink(),
-                'image_src' => $image_url, 
+                'image_src' => $image_url,
                 'image_alt' => $image_alt,
+                'title' => $title,
+                'category' => $categories[0]->name,
             );
 
             $posts[] = $post_data;
@@ -336,103 +357,109 @@ add_action('wp_ajax_nopriv_order_by_category', 'order_by_category');
 
 
 
-    function order_by_format() {
-        $format = isset($_POST['format']) ? $_POST['format'] : '';
-    
-        $args = array(
-            'post_type' => 'photos',
-            'posts_per_page' => 8,
-            'orderby' => 'date',
-            'order' => 'DESC',
+function order_by_format()
+{
+    $format = isset($_POST['format']) ? $_POST['format'] : '';
+
+    $args = array(
+        'post_type' => 'photos',
+        'posts_per_page' => 8,
+        'orderby' => 'date',
+        'order' => 'DESC',
+    );
+
+    if (!empty($format)) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'format',
+                'field' => 'slug',
+                'terms' => $format,
+            ),
         );
-    
-        if (!empty($format)) {
-            $args['tax_query'] = array(
-                array(
-                    'taxonomy' => 'format',
-                    'field' => 'slug',
-                    'terms' => $format,
-                ),
+    }
+
+    $query = new WP_Query($args);
+    $posts = array();
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $image = get_field('image');
+            if ($image) {
+                $image_url = $image['url'];
+                $image_alt = $image['alt'];
+            }
+            $title = get_field('title');
+            $format = get_the_terms(get_the_ID(), 'format');
+            $format = $format[0]->name;
+            $post_data = array(
+                'post_title' => get_the_title(),
+                'post_link' => get_permalink(),
+                'image_src' => $image_url,
+                'image_alt' => $image_alt,
+                'title' => $title,
+                'format' => $format
             );
+
+            $posts[] = $post_data;
         }
-    
-        $query = new WP_Query($args);
-        $posts = array();
-        if ($query->have_posts()) {
-            while ($query->have_posts()) {
-                $query->the_post();
-                $image = get_field('image');
-                if ($image) {
-                    $image_url = $image['url'];
-                    $image_alt = $image['alt'];
-                }
-                $post_data = array(
-                    'post_title' => get_the_title(),
-                    'post_link' => get_permalink(),
-                    'image_src' => $image_url, 
-                    'image_alt' => $image_alt,
-                );
-    
-                $posts[] = $post_data;
-            }
-            wp_send_json_success($posts);
-            wp_reset_postdata();
-        } else {
-            wp_send_json_error('Aucun article trouvé.');
+        wp_send_json_success($posts);
+        wp_reset_postdata();
+    } else {
+        wp_send_json_error('Aucun article trouvé.');
+    }
+}
+add_action('wp_ajax_order_by_format', 'order_by_format');
+add_action('wp_ajax_nopriv_order_by_format', 'order_by_format');
+
+
+
+
+
+function order_by_date()
+{
+    $date = isset($_POST['date']) ? $_POST['date'] : '';
+
+    $args = array(
+        'post_type' => 'photos',
+        'posts_per_page' => 8,
+        'orderby' => 'date',
+        'order' => 'DESC',
+    );
+
+    if (!empty($date)) {
+        if ($date === 'DESC' || $date === 'ASC') {
+            $args['order'] = $date;
         }
     }
-    add_action('wp_ajax_order_by_format', 'order_by_format');
-    add_action('wp_ajax_nopriv_order_by_format', 'order_by_format');
-    
 
-
-
-
-    function order_by_date() {
-        $date = isset($_POST['date']) ? $_POST['date'] : '';
-    
-        $args = array(
-            'post_type' => 'photos',
-            'posts_per_page' => 8,
-            'orderby' => 'date',
-            'order' => 'DESC',
-        );
-    
-        if (!empty($date)) {
-            if ($date === 'DESC' || $date === 'ASC') {
-                $args['order'] = $date;
-            } 
-        }
-    
-        $query = new WP_Query($args);
-        $posts = array();
-        if ($query->have_posts()) {
-            while ($query->have_posts()) {
-                $query->the_post();
-                $image = get_field('image');
-                if ($image) {
-                    $image_url = $image['url'];
-                    $image_alt = $image['alt'];
-                }
-                $post_data = array(
-                    'post_title' => get_the_title(),
-                    'post_link' => get_permalink(),
-                    'image_src' => $image_url, 
-                    'image_alt' => $image_alt,
-                    'post_date' => get_the_date('d/m/Y'),
-                );
-    
-                $posts[] = $post_data;
+    $query = new WP_Query($args);
+    $posts = array();
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $image = get_field('image');
+            if ($image) {
+                $image_url = $image['url'];
+                $image_alt = $image['alt'];
             }
-            wp_send_json_success($posts);
-            wp_reset_postdata();
-        } else {
-            wp_send_json_error('Aucun article trouvé.');
+            $post_data = array(
+                'post_title' => get_the_title(),
+                'post_link' => get_permalink(),
+                'image_src' => $image_url,
+                'image_alt' => $image_alt,
+                'post_date' => get_the_date('d/m/Y'),
+            );
+
+            $posts[] = $post_data;
         }
+        wp_send_json_success($posts);
+        wp_reset_postdata();
+    } else {
+        wp_send_json_error('Aucun article trouvé.');
     }
-    add_action('wp_ajax_order_by_date', 'order_by_date');
-    add_action('wp_ajax_nopriv_order_by_date', 'order_by_date');
-    
+}
+add_action('wp_ajax_order_by_date', 'order_by_date');
+add_action('wp_ajax_nopriv_order_by_date', 'order_by_date');
 
 
 function load_posts()
@@ -448,6 +475,7 @@ function load_posts()
         'orderby' => 'date',
         'order' => 'DESC'
     );
+    
     if (!empty($category)) {
         $args['tax_query'][] = array(
             'taxonomy' => 'categorie',
@@ -456,7 +484,8 @@ function load_posts()
         );
     }
 
-    if (!empty($format)) {
+    // Vérifier si l'option "FORMATS" est sélectionnée
+    if ($format !== 'tous-les-formats' && !empty($format)) {
         $args['tax_query'][] = array(
             'taxonomy' => 'format',
             'field' => 'slug',
@@ -467,6 +496,7 @@ function load_posts()
     if ($sort === 'oldest') {
         $args['order'] = 'ASC';
     }
+    
     $query = new WP_Query($args);
     $posts = array();
     if ($query->have_posts()) {
@@ -483,9 +513,4 @@ function load_posts()
     wp_send_json_success($posts);
     wp_die();
 }
-
-
-
-
-
 ?>

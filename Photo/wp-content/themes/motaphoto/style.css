@@ -125,14 +125,6 @@ textarea {
     letter-spacing: 1px;
 }
 
-.post-home,
-.test {
-    margin-left: auto;
-    margin-right: auto;
-    display: grid;
-    gap: 20px;
-    align-items: start;
-}
 
 .container {
     flex-direction: column;
@@ -203,7 +195,7 @@ footer {
 }
 
 /* Smartphones ----------- */
-@media screen and (min-width: 320px) and (max-width: 767px) {
+@media screen and (min-width: 375px) and (max-width: 767px) {
     header {
         display: flex;
     }
@@ -535,7 +527,7 @@ footer {
         color: #fff;
         padding: 5px;
         border-radius: 50%;
-        margin-left: 20px;
+        margin-left: 30px;
         top: 25px;
     }
 
@@ -549,7 +541,7 @@ footer {
     .post-content .overlay {
         position: absolute;
         top: 0;
-        left: 7.6%;
+        left: 0;
         width: 318px;
         height: 279px;
         background-color: rgba(0, 0, 0, 0.6);
@@ -657,9 +649,6 @@ footer {
         height: 253px;
     }
 
-
-
-
     .filters {
         text-align: center;
         padding-bottom: 20px;
@@ -668,7 +657,6 @@ footer {
 
     .filters select {
         margin: 5px 0;
-        /* Ajouter une marge de 10px au-dessus et en dessous de chaque sélecteur */
     }
 
     .row {
@@ -831,6 +819,7 @@ footer {
         transition: opacity 0.3s ease;
     }
 
+    
     .post-content:hover .icon-eye,
     .post-content:hover .icon-fullscreen {
         opacity: 1;
@@ -858,10 +847,11 @@ footer {
     /* Overlay noir */
     .post-content .overlay {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: 49%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        width: 400px; 
+        height: 400px;
         background-color: rgba(0, 0, 0, 0.6);
         opacity: 0;
         transition: opacity 0.3s ease;
@@ -904,6 +894,8 @@ footer {
     .post-content .icon-fullscreen i {
         margin-left: 37rem;
     }
+
+    
 
     .entry-content {
         padding-top: 20px;
@@ -1120,12 +1112,15 @@ footer {
         background-color: rgb(0, 0, 0);
         background-color: rgba(0, 0, 0, 0.4);
     }
-
+    .form-contact {
+        height: 100vh;
+    }
     /* Modal Content/Box */
     .modal-content {
-        margin: 5% auto;
+        margin: 2% auto;
         border: 1px solid #888;
         width: 38%;
+        height: 50%;
     }
 
     /* The Close Button */
@@ -1148,6 +1143,9 @@ footer {
     }
 
 
+    /*BOUTON CHARGER PLUS */
+
+
     #loadmore {
         background-color: #D8D8D8;
         height: 50px;
@@ -1163,21 +1161,6 @@ footer {
         padding-bottom: 20px;
     }
 
-    .post {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    .catalog {
-        display: block;
-        display: flexbox;
-        width: 564px;
-        height: 495px;
-        object-fit: cover;
-        margin: 0 auto;
-    }
 
     .form-contact {
         width: 597px;
@@ -1186,6 +1169,11 @@ footer {
         margin-left: auto;
         margin-right: auto;
     }
+
+
+    /*PAGE D'ACCUEIL*/
+
+  
 
     .form-filter {
         display: flex;
@@ -1216,10 +1204,43 @@ footer {
         margin-left: 70%;
     }
 
+    .post {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
     .post-content {
         margin-left: auto;
         margin-right: auto;
+        position: relative;
+        text-align: center;
+        width: 564px;
+        height: 495px;
     }
+
+
+    .post-home {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .post {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+    }
+  
+    .catalog {
+        display: block;
+        display: flexbox;
+        width: 564px;
+        height: 495px;
+        object-fit: cover;
+        margin: 0 auto;
+    }
+
+
 
     #filtered-posts {
         margin-left: auto;
@@ -1227,15 +1248,6 @@ footer {
         display: grid;
         gap: 20px;
         grid-template-columns: repeat(2, 1fr);
-    }
-    .post {
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 20px;
-    }
-    .post-content {
-        position: relative;
-        text-align: center;
     }
    
     .icon-eye {
@@ -1353,23 +1365,37 @@ footer {
       
       #lightbox {
         position: absolute;
-        top: 50%;
+        top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background-color: #fff;
         padding: 20px;
       }
       
       #photo {
-        max-width: 900px;
-        max-height: 90%;
+        width: 900px;
+        height: 500px;
         display: block;
         margin: 0 auto;
+        object-fit: cover;
       }
       
       #caption {
         text-align: center;
         margin-top: 10px;
+      }
+
+      #reference, #category {
+        margin-top: 10px;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: 400;
+
+      }
+
+      .infos {
+        display: flex;
+        justify-content: space-between;
       }
       
       #prevBtn, #nextBtn, #closeBtn {
@@ -1382,11 +1408,11 @@ footer {
       }
       
       #prevBtn {
-        left: 20px;
+        left: -50px;
       }
       
       #nextBtn {
-        right: 20px;
+        right: -50px;
       }
       
       #closeBtn {
@@ -1394,5 +1420,16 @@ footer {
         top: 10px;
       }
       
+
+input[type="text"],
+[type="email"] {
+    border: 1px solid #B8BBC2;
+    border-radius: 8px;
+    padding: 8px;
+    outline: none;
+    box-shadow: none;
+    height: 30px;
+    width: 288px;
+}
 
 }

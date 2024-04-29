@@ -1,11 +1,12 @@
-
         <?php
         wp_footer();
         wp_nav_menu(array(
-            'theme_location' => 'footer-menu', // identifiant du menu enregistré
-            'menu_class' => 'footer-menu', // classe CSS pour le menu
+            'theme_location' => 'footer-menu', 
+            'menu_class' => 'footer-menu', // classe CSS du menu
         ));
         ?>
+        
+    
 <script>
     document.addEventListener('DOMContentLoaded', function() {
   const images = document.querySelectorAll('.catalog');
