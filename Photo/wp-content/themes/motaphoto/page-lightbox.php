@@ -9,7 +9,7 @@
                         </div>
                         <button id="prevBtn" class="navBtn">&lt;</button>
                         <button id="nextBtn" class="navBtn">&gt;</button>
-                        <button id="closeBtn">Close</button>
+                        <button id="closeBtn">X</button>
                     </div>
                 </div>
                 <script src="<?php echo get_template_directory_uri(); ?>/js/lightbox.js">

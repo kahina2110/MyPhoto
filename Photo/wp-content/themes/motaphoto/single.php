@@ -71,29 +71,44 @@
                     }
                     ?>
                     <div class="site__navigation">
-                        <div class="site__navigation__prev">
-                            <?php $prev_post = get_previous_post(); ?>
-                            <?php if (!empty($prev_post)): ?>
-                                <a href="<?php echo get_permalink($prev_post->ID); ?>">
-                                    <img class="" src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/prev.png'; ?>"
-                                        alt="Article Précédent">
-                                </a>
-                            <?php endif; ?>
-                            <?php $next_post = get_next_post(); ?>
-                            <?php if (!empty($next_post)): ?>
-                                <a href="<?php echo get_permalink($next_post->ID); ?>">
-                                    <img class="" src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/next.png'; ?>"
-                                        alt="Article Suivant">
-                                </a>
-                            <?php endif; ?>
-                        </div>
-                        <div class="site__navigation__next">
-                        </div>
-                    </div>
-
-
+    <div class="site__navigation__prev">
+        <?php $prev_post = get_previous_post();?>
+        <?php if (!empty($prev_post)):?>
+            <a href="<?php echo get_permalink($prev_post->ID);?>">
+                <img src="<?php echo get_the_post_thumbnail($prev_post->ID, 'thumbnail')?>">
+            </a>
+        <?php endif;?>
+        <?php $next_post = get_next_post();?>
+        <?php if (!empty($next_post)):?>
+            <a href="<?php echo get_permalink($next_post->ID);?>">
+                <?php echo get_the_post_thumbnail($next_post->ID, 'thumbnail');?>
+            </a>
+        <?php endif;?>
+    </div>
+    <div class="site__navigation__next">
+    </div>
+</div>
                 </div>
+            
+                <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const navLinks = document.querySelectorAll('.site__navigation a');
 
+    navLinks.forEach(link => {
+        link.addEventListener('mouseover', function() {
+            const thumbnail = this.querySelector('.thumbnail');
+            thumbnail.style.display = 'block';
+        });
+
+        link.addEventListener('mouseout', function() {
+            const thumbnail = this.querySelector('.thumbnail');
+            thumbnail.style.display = 'none';
+        });
+    });
+});
+</script>
+
+            </script>
 
             </div>
         <?php endwhile; else: ?>
@@ -116,7 +131,7 @@
         $term_ids = array();
         foreach ($categories as $category) {
             $term_ids[] = $category->term_id;
-        }
+        }}
         $args = array(
             'post_type' => 'photos',
             'posts_per_page' => 2,
@@ -142,26 +157,59 @@
                     $image_alt = $image['alt'];
                 }
 
-                echo '<li>
-                    <a href="' . get_permalink() . '" >
-                    <img class="suggestions" src="' . $image_url . '" alt="' . $image_alt . '">
-                    </a>
-                    </li>';
-            }
-            echo '</ul>';
-            wp_reset_postdata();
-        } else {
-            echo '<p>Aucun article similaire trouvé.</p>';
-        }
-    }
-    ?>
 
+   
+                echo '<li class="suggestion-item">
+                <div class="suggestion-overlay">
+                    <a href="' . get_permalink() . '">
+                        <span class="icon-eye-single">
+                            <i class="far fa-eye fa-2x"></i>
+                        </span>
+                    </a>
+                   
+                        <span class="icon-fullscreen-single">
+                        <i class="fa-solid fa-expand "></i>
+                        </span>
+                    
+                </div>
+                <img class="suggestions" src="' . $image_url . '" alt="' . $image_alt . '">
+              </li>';
+        
+    }
+    echo '</ul>';
+    wp_reset_postdata();
+} else {
+    echo '<p>Aucun article similaire trouvé.</p>';
+}
+
+    ?>
+        <div id="overlay" style="display: none;">
+                    <div id="lightbox">
+                        <img id="photo" src="" alt="">
+                        <p id="caption"></p>
+                        <div class="infos">
+                            <p id="reference"></p>
+                            <p id="category"></p>
+                        </div>
+                        <button id="prevBtn" class="navBtn"><img src="<?= get_stylesheet_directory_uri() . '/PhotosNMota/precedent.png'?>"></button>
+                        <button id="nextBtn" class="navBtn"><img src="<?= get_stylesheet_directory_uri() . '/PhotosNMota/suivant.png'?>"></button>
+                        <button id="closeBtn">X</button>
+                    </div>
+                </div>
+                <script src="<?php echo get_template_directory_uri(); ?>/js/lightbox.js">
+
+<script src="<?php echo get_template_directory_uri(); ?>/js/lightbox-single.js">
 
 </div>
 
 
+
+
+
 <?php get_template_part('/page-modal') ?>
-<script >
+
+
+<script>
 document.addEventListener("DOMContentLoaded", function() {
     // Votre code JavaScript ici
     var modal = document.getElementById('myModal');

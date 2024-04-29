@@ -147,9 +147,9 @@ Template Name: Accueil
                             <p id="reference"></p>
                             <p id="category"></p>
                         </div>
-                        <button id="prevBtn" class="navBtn">&lt;</button>
-                        <button id="nextBtn" class="navBtn">&gt;</button>
-                        <button id="closeBtn">Close</button>
+                        <button id="prevBtn" class="navBtn"><img src="<?= get_stylesheet_directory_uri() . '/PhotosNMota/precedent.png'?>"></button>
+                        <button id="nextBtn" class="navBtn"><img src="<?= get_stylesheet_directory_uri() . '/PhotosNMota/suivant.png'?>"></button>
+                        <button id="closeBtn">X</button>
                     </div>
                 </div>
 
@@ -165,11 +165,14 @@ Template Name: Accueil
 
 </div>
 
+<div>
+  
+</div>
+
 
 
 <script src="<?php echo get_template_directory_uri(); ?>/js/lightbox.js">
 </script>
-
 <footer>
     <?php get_footer(); ?>
 </footer>
