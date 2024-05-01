@@ -249,6 +249,7 @@ add_action('wp_enqueue_scripts', 'motaphoto_scripts');
 function load_more_posts()
 {
     $offset = isset($_POST['offset']) ? $_POST['offset'] : 0;
+    $filters = isset($_POST['filters']) ? $_POST['filters'] : array(); // Récupérez les valeurs des filtres
 
     $args = array(
         'post_type' => 'photos',
@@ -256,6 +257,16 @@ function load_more_posts()
         'offset' => $offset,
         'orderby' => 'date',
         'order' => 'DESC',
+        // Ajoutez les valeurs des filtres à la requête
+        'tax_query' => array(
+            'relation' => 'AND', // Peut-être 'AND' ou 'OR' selon vos besoins
+            array(
+                'taxonomy' => 'categorie',
+                'field' => 'slug',
+                'terms' => $filters['category'] // Utilisez la valeur du filtre de catégorie
+            ),
+            // Ajoutez d'autres filtres si nécessaire
+        )
     );
 
     $query = new WP_Query($args);
@@ -473,59 +484,7 @@ add_action('wp_ajax_order_by_date', 'order_by_date');
 add_action('wp_ajax_nopriv_order_by_date', 'order_by_date');
 
 
-function load_posts()
-{
-    $category = isset($_POST['category']) ? $_POST['category'] : '';
-    $format = isset($_POST['format']) ? $_POST['format'] : '';
-    $sort = isset($_POST['sort']) ? $_POST['sort'] : '';
-    $offset = isset($_POST['offset']) ? $_POST['offset'] : 0;
-    $args = array(
-        'post_type' => 'photos',
-        'posts_per_page' => 8,
-        'offset' => $offset,
-        'orderby' => 'date',
-        'order' => 'DESC'
-    );
-    
-    if (empty($category)) {
-        $args = array(
-            'post_type' => 'photos',
-            'posts_per_page' => 8,
-            'offset' => $offset,
-            'orderby' => 'date',
-            'order' => 'DESC'
-        );
-    }
-
-    // Vérifier si l'option "FORMATS" est sélectionnée
-    if ($format !== 'tous-les-formats' && !empty($format)) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'format',
-            'field' => 'slug',
-            'terms' => $format,
-        );
-    }
-
-    if ($sort === 'oldest') {
-        $args['order'] = 'ASC';
-    }
-    
-    $query = new WP_Query($args);
-    $posts = array();
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
-            $query->the_post();
-            $post_data = array(
-                'post_title' => get_the_title(),
-                'post_content' => get_the_excerpt(),
-                'post_link' => get_permalink(),
-            );
-            $posts[] = $post_data;
-        }
-    }
-    wp_send_json_success($posts);
-    wp_die();
-}
 
 
+// Ajouter la prise en charge des miniatures pour les posts
 ?>

@@ -59,6 +59,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+function load_more_posts() {
+    var offset = jQuery('.posts-container .post').length;
+    var filters = {
+        // Récupérez les valeurs des filtres ici, par exemple :
+        category: jQuery('#category-filter').val(),
+        // Ajoutez d'autres filtres si nécessaire
+    };
+
+    jQuery.ajax({
+        url: ajaxurl,
+        type: 'post',
+        data: {
+            action: 'load_more_posts',
+            offset: offset,
+            filters: filters // Envoyez les valeurs des filtres
+        },
+        success: function(response) {
+            // Traitez la réponse ici
+        }
+    });
+}
+
 
 function attachEventHandlersToImages(images, fullScreenIcons) {
     images.forEach((image, index) => {
@@ -96,19 +118,19 @@ function attachEventHandlersToImages(images, fullScreenIcons) {
 
     // Ajoutez le code HTML du lightbox ici
     const lightboxHTML = `
-        <div id="overlay" style="display: none;">
-            <div id="lightbox">
-                <img id="photo" src="" alt="">
-                <p id="caption"></p>
-                <div class="infos">
-                    <p id="reference"></p>
-                    <p id="category"></p>
-                </div>
-                <button id="prevBtn" class="navBtn">&lt;</button>
-                <button id="nextBtn" class="navBtn">&gt;</button>
-                <button id="closeBtn">Close</button>
-            </div>
+    <div id="overlay" style="display: none;">
+    <div id="lightbox">
+        <img id="photo" src="" alt="">
+        <p id="caption"></p>
+        <div class="infos">
+            <p id="reference"></p>
+            <p id="category"></p>
         </div>
+        <button id="prevBtn" class="navBtn"><img src="<?= get_stylesheet_directory_uri() . '/PhotosNMota/precedent.png'?>"></button>
+        <button id="nextBtn" class="navBtn"><img src="<?= get_stylesheet_directory_uri() . '/PhotosNMota/suivant.png'?>"></button>
+        <button id="closeBtn">X</button>
+    </div>
+</div>
     `;
      // Ajoutez le lightbox HTML au corps du document
      document.body.insertAdjacentHTML('beforeend', lightboxHTML);

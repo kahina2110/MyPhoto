@@ -46,10 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
                    `;
                         
                     filteredPosts.insertAdjacentHTML('beforeend', postHTML);
+                    attachEventHandlersToImages(document.querySelectorAll('.catalog'), document.querySelectorAll('.icon-fullscreen'));
                 });
 
                 // Réattacher les gestionnaires d'événements aux nouvelles images
-                attachEventHandlersToImages(document.querySelectorAll('.catalog'), document.querySelectorAll('.icon-fullscreen'));
             } else {
                 console.error('Invalid data format received from server.');
                 filteredPosts.innerHTML = '<p>Aucun article trouvé.</p>';
@@ -67,8 +67,8 @@ function attachEventHandlersToImages(images, fullScreenIcons) {
         const fullScreenIcon = fullScreenIcons[index];
         
         fullScreenIcon.addEventListener('click', function(event) {
-            event.stopPropagation(); 
-            
+
+                const clickedImage = event.target.closest('.catalog');
             const imageSrc = image.getAttribute('src');
             const imageAlt = image.getAttribute('alt');
             const imageRef = image.getAttribute('data-reference');
@@ -98,20 +98,21 @@ function attachEventHandlersToImages(images, fullScreenIcons) {
 
     // Ajoutez le code HTML du lightbox ici
     const lightboxHTML = `
-        <div id="overlay" style="display: none;">
-            <div id="lightbox">
-                <img id="photo" src="" alt="">
-                <p id="caption"></p>
-                <div class="infos">
-                    <p id="reference"></p>
-                    <p id="category"></p>
-                </div>
-                <button id="prevBtn" class="navBtn">&lt;</button>
-                <button id="nextBtn" class="navBtn">&gt;</button>
-                <button id="closeBtn">Close</button>
-            </div>
+    <div id="overlay" style="display: none;">
+    <div id="lightbox">
+        <img id="photo" src="" alt="">
+        <p id="caption"></p>
+        <div class="infos">
+            <p id="reference"></p>
+            <p id="category"></p>
         </div>
+        <button id="prevBtn" class="navBtn"><img src="<?= get_stylesheet_directory_uri() . '/PhotosNMota/precedent.png'?>"></button>
+        <button id="nextBtn" class="navBtn"><img src="<?= get_stylesheet_directory_uri() . '/PhotosNMota/suivant.png'?>"></button>
+        <button id="closeBtn">X</button>
+    </div>
+</div>
     `;
+    console.log(lightboxHTML);
      // Ajoutez le lightbox HTML au corps du document
      document.body.insertAdjacentHTML('beforeend', lightboxHTML);
      document.getElementById('closeBtn').addEventListener('click', function() {

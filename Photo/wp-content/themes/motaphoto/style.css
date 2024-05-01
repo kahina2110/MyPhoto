@@ -226,6 +226,10 @@ footer {
         text-align: left;
     }
 
+    .site__navigation {
+        display: none;
+     }
+
     /***LIGHTBOX***/
 
     #overlay {
@@ -916,6 +920,9 @@ footer {
         margin-right: auto;
     }
 
+    .site__navigation {
+       display: none;
+    }
     .suggestions {
         text-align: center;
         align-items: center;
@@ -1332,9 +1339,31 @@ footer {
 
 
     .site__navigation {
-        padding-top: 23px;
         width: 50%;
-        margin-left: 290px;
+        display: flex;
+    }
+    
+    .site__navigation__next {
+        margin-left: 91%;
+    }
+    .image-part .site__navigation img > .arrows {
+        width: 81px; 
+        height: 71px;
+        border: 2px solid #ccc; /* Ajouter une bordure */
+        border-radius: 5px; /* Ajouter un arrondi aux coins */
+        transition: transform 0.3s ease-in-out; /* Ajouter une transition pour un effet de survol */
+        object-fit: contain;
+    }
+
+ 
+    .arrow {
+        border: none;
+        margin-left: -13px;
+    }
+    /* Effet de survol sur les miniatures */
+    .image-part .site__navigation img:hover {
+        transform: scale(1.1); /* Agrandir légèrement l'image */
+        border-color: #555; /* Changer la couleur de la bordure */
     }
 
     .contact-div {
@@ -1355,7 +1384,6 @@ footer {
     .more {
         margin-left: 10%;
         margin-right: 11%;
-        margin-top: 30px;
     }
 
     .more h4 {

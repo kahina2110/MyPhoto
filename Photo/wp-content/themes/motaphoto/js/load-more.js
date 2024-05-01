@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                         </div>`;
                         document.querySelector('#filtered-posts').insertAdjacentHTML('beforeend', postHTML);
+                        attachEventHandlersToImages(document.querySelectorAll('.catalog'), document.querySelectorAll('.icon-fullscreen'));
                     });
 
-                    attachEventHandlersToImages(document.querySelectorAll('.catalog'), document.querySelectorAll('.icon-fullscreen'));
                     offset += 8;
                 } else {
                     console.error('PLUS D ARTICLES');
