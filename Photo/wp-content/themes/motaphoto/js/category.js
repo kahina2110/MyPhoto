@@ -106,8 +106,6 @@ function attachEventHandlersToImages(images, fullScreenIcons) {
             <p id="reference"></p>
             <p id="category"></p>
         </div>
-        <button id="prevBtn" class="navBtn"><img src="<?= get_stylesheet_directory_uri() . '/PhotosNMota/precedent.png'?>"></button>
-        <button id="nextBtn" class="navBtn"><img src="<?= get_stylesheet_directory_uri() . '/PhotosNMota/suivant.png'?>"></button>
         <button id="closeBtn">X</button>
     </div>
 </div>

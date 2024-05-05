@@ -246,66 +246,46 @@ if(is_front_page()){
 add_action('wp_enqueue_scripts', 'motaphoto_scripts');
 
 
-function load_more_posts()
-{
-    $offset = isset($_POST['offset']) ? $_POST['offset'] : 0;
-    $filters = isset($_POST['filters']) ? $_POST['filters'] : array(); // Récupérez les valeurs des filtres
+// Fonction pour charger plus de posts personnalisés
+function load_more_posts() {
 
     $args = array(
-        'post_type' => 'photos',
-        'posts_per_page' => 8,
-        'offset' => $offset,
-        'orderby' => 'date',
-        'order' => 'DESC',
-        // Ajoutez les valeurs des filtres à la requête
-        'tax_query' => array(
-            'relation' => 'AND', // Peut-être 'AND' ou 'OR' selon vos besoins
-            array(
-                'taxonomy' => 'categorie',
-                'field' => 'slug',
-                'terms' => $filters['category'] // Utilisez la valeur du filtre de catégorie
-            ),
-            // Ajoutez d'autres filtres si nécessaire
-        )
+        'post_type' => 'photos', 
+        'posts_per_page' => 8, 
+        'offset' => $_POST['offset'] 
     );
 
     $query = new WP_Query($args);
+
     $posts = array();
+
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
             $image = get_field('image');
-            $title = get_field('title');
-            $format = get_the_terms(get_the_ID(), 'format');
-            $format = $format[0]->name;
-            $category = get_the_terms(get_the_ID(), 'categorie');
-            $category = $category[0]->name;
-            if ($image) {
-                $image_url = $image['url'];
-                $image_alt = $image['alt'];
-            }
+                            if ($image) {
+                                $image_url = $image['url'];
+                                $image_alt = $image['alt'];
+                            }
+                            $title = get_field('title');
             $post_data = array(
                 'post_title' => get_the_title(),
+                'title' => $title,
                 'post_content' => get_the_excerpt(),
                 'post_link' => get_permalink(),
                 'image_src' => $image_url,
-                'image_alt' => $image_alt,
-                'format' => $format,
-                'category' => $category,
-                'title' => $title
+                'image_alt' => $image_alt
             );
-
             $posts[] = $post_data;
         }
-        wp_send_json_success($posts);
-        wp_reset_postdata();
-    } else {
-        wp_send_json_error('Aucun article trouvé.');
     }
 
+    wp_reset_postdata();
+
+    wp_send_json_success($posts);
 }
 
-
+// Action Ajax pour charger plus de posts personnalisés
 add_action('wp_ajax_load_more_posts', 'load_more_posts');
 add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts'); // Pour les utilisateurs non connectés
 
@@ -486,5 +466,4 @@ add_action('wp_ajax_nopriv_order_by_date', 'order_by_date');
 
 
 
-// Ajouter la prise en charge des miniatures pour les posts
 ?>

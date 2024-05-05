@@ -1,16 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let offset = 8; 
+    let offset = 8; // Commencez avec un offset de 0
     let totalPosts = 0; 
 
     document.querySelector('#loadmore').addEventListener('click', function(event) {
         event.preventDefault(); 
-
-        const categoryFilter = document.querySelector('#category-filter').value;
         
         let formData = new FormData();
         formData.append('action', 'load_more_posts');
         formData.append('offset', offset); 
-        formData.append('category', categoryFilter); 
 
         try {
             fetch(motaphoto_js.ajax_url, {
@@ -24,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.json();
             })
             .then(function(data) {
-                if (data && data.data && Array.isArray(data.data)) {
+                if (data && data.success && data.data && Array.isArray(data.data)) {
                     totalPosts = data.total_posts; 
                     data.data.forEach(function(post) {
                         const postHTML = `
@@ -46,12 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                         </div>`;
                         document.querySelector('#filtered-posts').insertAdjacentHTML('beforeend', postHTML);
-                        attachEventHandlersToImages(document.querySelectorAll('.catalog'), document.querySelectorAll('.icon-fullscreen'));
                     });
 
-                    offset += 8;
+                    offset += 8; 
                 } else {
-                    console.error('PLUS D ARTICLES');
+                    console.error('No more articles found');
                 }
             })
             .catch(function(error) {
@@ -62,60 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-function attachEventHandlersToImages(images, fullScreenIcons) {
-    images.forEach((image, index) => {
-        const fullScreenIcon = fullScreenIcons[index];
-        
-        fullScreenIcon.addEventListener('click', function(event) {
-            event.stopPropagation(); 
-            
-            const imageSrc = image.getAttribute('src');
-            const imageAlt = image.getAttribute('alt');
-            const imageRef = image.getAttribute('data-reference');
-            const category = image.getAttribute('data-category');
-
-            document.getElementById('photo').src = imageSrc;
-            document.getElementById('photo').alt = imageAlt;
-            document.getElementById('caption').textContent = imageAlt;
-            document.getElementById('reference').textContent = imageRef;
-            document.getElementById('category').textContent = category;
-
-            currentImageIndex = index;
-            
-            document.getElementById('overlay').style.display = 'block';
-        });
-    });
-    const navButtons = document.querySelectorAll('.navBtn');
-
-    navButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            if (this.id === 'prevBtn') {
-                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-            } else if (this.id === 'nextBtn') {
-                currentImageIndex = (currentImageIndex + 1) % images.length;
-    }})})
 
 
-    // Ajoutez le code HTML du lightbox ici
-    const lightboxHTML = `
-        <div id="overlay" style="display: none;">
-            <div id="lightbox">
-                <img id="photo" src="" alt="">
-                <p id="caption"></p>
-                <div class="infos">
-                    <p id="reference"></p>
-                    <p id="category"></p>
-                </div>
-                <button id="prevBtn" class="navBtn">&lt;</button>
-                <button id="nextBtn" class="navBtn">&gt;</button>
-                <button id="closeBtn">Close</button>
-            </div>
-        </div>
-    `;
-     // Ajoutez le lightbox HTML au corps du document
-     document.body.insertAdjacentHTML('beforeend', lightboxHTML);
-     document.getElementById('closeBtn').addEventListener('click', function() {
-         document.getElementById('overlay').style.display = 'none';
-     });
- 
-    };
+
+

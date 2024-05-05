@@ -39,12 +39,7 @@
                     <p>ANNEE :
                         <?php the_field('annee'); ?>
                     </p>
-                    <div class="contact-div">
-                        <p>Cette photo vous intéresse ?</p>
-                        <div id="menu-item-157" class="contact-btn">
-                            <button id="contact" href="#">Contact</button>
-                        </div>
-                    </div>
+
 
                     <?php
                     $prev_post = get_previous_post();
@@ -53,50 +48,70 @@
 
                 </div>
 
-             <div class="image-part">
-    <?php the_content(); ?>
-    <?php
-    $image = get_field('image');
-    if ($image) {
-        $image_url = $image['url'];
-        $image_title = $image['title'];
-        $image_alt = $image['alt'];
+                <div class="image-part">
+                    <?php the_content(); ?>
+                    <?php
+                    $image = get_field('image');
+                    if ($image) {
+                        $image_url = $image['url'];
+                        $image_title = $image['title'];
+                        $image_alt = $image['alt'];
 
-        echo '<img class="image-post" src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" title="' . esc_attr($image_title) . '">';
-    } else {
-        echo 'Aucune image trouvée.';
-    }
-    ?>
-  <div class="site__navigation">
-    <div class="site__navigation__prev">
-        <?php $prev_post = get_previous_post();
-        if (!empty($prev_post)): ?>
-            <a href="<?php echo get_permalink($prev_post->ID); ?>">
-                <?php echo get_the_post_thumbnail($prev_post->ID, 'thumbnail'); ?>
-                <img style="border: none;" class="arrow-left" src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/prev.png' ?>" alt="arrow-left">
-            </a>
-        <?php endif; ?>
-    </div>
-    <div class="site__navigation__next">
-        <?php $next_post = get_next_post();
-        if (!empty($next_post)): ?>
-            <a href="<?php echo get_permalink($next_post->ID); ?>">
-                <?php echo get_the_post_thumbnail($next_post->ID, 'thumbnail'); ?>
-                <img style="border: none;" class="arrow-right" src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/next.png' ?>" alt="arrow-right">
-            </a>
-        <?php endif; ?>
-    </div>
-</div>
+                        echo '<img class="image-post" src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '" title="' . esc_attr($image_title) . '">';
+                    } else {
+                        echo 'Aucune image trouvée.';
+                    }
+                    ?>
 
-</div>
+
+
+
+                </div>
             </div>
         <?php endwhile; else: ?>
         <p>Aucun post trouvé.</p>
     <?php endif; ?>
 
 </div>
+<div class="miniature">
+
+    <div class="contact-div">
+        <p>Cette photo vous intéresse ?</p>
+        <div id="menu-item-157" class="contact-btn">
+            <button id="contact" href="#">Contact</button>
+        </div>
+        <div class="site__navigation">
+    <div class="site__navigation__prev">
+        <?php $prev_post = get_previous_post();
+        if (!empty($prev_post)): ?>
+            <a href="<?php echo get_permalink($prev_post->ID); ?>" class="navigation-link with-thumbnail">
+                <img class="arrow-left" src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/previous.png' ?>" alt="arrow-left">
+                <img class="thumbnail" src="<?php echo get_the_post_thumbnail_url($prev_post->ID); ?>" alt="Thumbnail">
+            </a>
+        <?php else: ?>
+            <a href="#" class="navigation-link">
+                <img class="arrow-left" src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/previous.png' ?>" alt="arrow-left">
+            </a>
+        <?php endif; ?>
+    </div>
+    <div class="site__navigation__next">
+        <?php $next_post = get_next_post();
+        if (!empty($next_post)): ?>
+            <a href="<?php echo get_permalink($next_post->ID); ?>" class="navigation-link with-thumbnail">
+                <img class="arrow-right" src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/nextime.png' ?>" alt="arrow-right">
+                <img class="thumbnail" src="<?php echo get_the_post_thumbnail_url($next_post->ID); ?>" alt="Thumbnail">
+            </a>
+        <?php else: ?>
+            <a href="#" class="navigation-link">
+                <img class="arrow-right" src="<?php echo get_stylesheet_directory_uri() . '/PhotosNMota/nextime.png' ?>" alt="arrow-right">
+            </a>
+        <?php endif; ?>
+    </div>
+</div>
 
 
+    </div>
+</div>
 <div class="more">
     <div class="border-top">
         <br>
@@ -179,48 +194,48 @@
         </div>
     </div>
 
-        <script src="<?php echo get_template_directory_uri(); ?>/js/lightbox-single.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/lightbox-single.js"></script>
 
-        </div>
-
-
+</div>
 
 
 
-        <?php get_template_part('/page-modal') ?>
- 
 
-            <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // Votre code JavaScript ici
-                var modal = document.getElementById('myModal');
-                var btn = document.getElementById("contact");
-                var span = document.getElementsByClassName("close")[0];
 
-                function closeModalWithFade() {
-                    modal.style.opacity = "0";
-                    setTimeout(function () {
-                        modal.style.display = "none";
-                        modal.style.opacity = "1";
-                    }, 300);
-                }
+<?php get_template_part('/page-modal') ?>
 
-                btn.onclick = function () {
-                    modal.style.display = "block";
-                    var refPhoto = "<?php echo the_field('reference'); ?>";
-                    document.getElementById("ref-photo").setAttribute("value", refPhoto);
-                }
 
-                span.onclick = function () {
-                    closeModalWithFade();
-                }
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Votre code JavaScript ici
+        var modal = document.getElementById('myModal');
+        var btn = document.getElementById("contact");
+        var span = document.getElementsByClassName("close")[0];
 
-                window.onclick = function (event) {
-                    if (event.target == modal) {
-                        closeModalWithFade();
-                    }
-                }
-            });
-    </script>
+        function closeModalWithFade() {
+            modal.style.opacity = "0";
+            setTimeout(function () {
+                modal.style.display = "none";
+                modal.style.opacity = "1";
+            }, 300);
+        }
 
-    <?php get_footer(); ?>
+        btn.onclick = function () {
+            modal.style.display = "block";
+            var refPhoto = "<?php echo the_field('reference'); ?>";
+            document.getElementById("ref-photo").setAttribute("value", refPhoto);
+        }
+
+        span.onclick = function () {
+            closeModalWithFade();
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                closeModalWithFade();
+            }
+        }
+    });
+</script>
+
+<?php get_footer(); ?>

@@ -196,7 +196,7 @@ footer {
 }
 
 /* Smartphones ----------- */
-@media screen and (min-width: 320px) and (max-width: 767px) {
+@media screen and (min-width: 375px) and (max-width: 767px) {
     header {
         display: flex;
     }
@@ -237,7 +237,6 @@ footer {
         position: fixed;
         top: 0;
         left: 0px;
-        width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, 0.8);
         z-index: 999;
@@ -439,14 +438,6 @@ footer {
         text-decoration: none;
     }
 
-    .modal {
-        z-index: 9999;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
     .img-header {
         height: 253px;
     }
@@ -524,7 +515,7 @@ footer {
     }
 
     .catalog {
-        width: 318px;
+        width: 279px;
         height: 279px;
         object-fit: cover;
     }
@@ -539,31 +530,42 @@ footer {
         display: none;
         position: fixed;
         z-index: 1;
-        left: 50%;
-        top: 85%;
+        left: 190px;
+        top: 500px;
         margin-left: auto;
         margin-right: auto;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);
     }
 
+      .modal {
+        position: fixed;
+        top: 50%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+    }
     .wpcf7.js {
         padding-right: 40px;
     }
 
     .form-contact input {
-
         width: 280px;
     }
 
     /* Modal Content/Box */
     .modal-content {
         background-color: #fefefe;
-        margin: 5% auto;
-        border: 1px solid #888;
+        margin: 5% ;
         width: 55%;
     }
 
+    .form-contact {
+        width: 360px;
+    
+            border: 1px solid #000;
+            border-radius: 5px
+    }
+    .contact-img {
+        width: 360px;
+    }
     /* The Close Button */
     .close {
         color: #aaa;
@@ -610,9 +612,7 @@ footer {
         color: #fff;
     }
 
-    .post-content {
-        position: relative;
-    }
+  
 
     .post-content:hover .icon-eye {
         display: block;
@@ -661,7 +661,7 @@ footer {
         color: #fff;
         padding: 5px;
         border-radius: 50%;
-        margin-left: 30px;
+        margin-left: 10px;
         top: 25px;
     }
 
@@ -675,8 +675,8 @@ footer {
     .post-content .overlay {
         position: absolute;
         top: 0;
-        left: 0;
-        width: 318px;
+        left: 3em;
+        width: 279px;
         height: 279px;
         background-color: rgba(0, 0, 0, 0.6);
         opacity: 0;
@@ -1239,7 +1239,6 @@ footer {
 /* Laptops ----------- */
 @media screen and (min-width: 1025px) {
 
-    /* Style pour la superposition et les icônes */
 .suggestion-item {
     position: relative;
     display: inline-block;
@@ -1251,13 +1250,13 @@ footer {
     left: 0;
     width: 540px;
     height: 495px;
-    background-color: rgba(0, 0, 0, 0.5); /* Couleur de fond semi-transparente */
-    opacity: 0; /* Initiallement invisible */
-    transition: opacity 0.3s ease; /* Transition fluide */
+    background-color: rgba(0, 0, 0, 0.5); 
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
 }
 
 .suggestion-item:hover .suggestion-overlay {
-    opacity: 1; /* Affiche la superposition au survol */
+    opacity: 1; 
 }
 
 .icon-eye-single
@@ -1337,41 +1336,109 @@ footer {
         height: 840px;
     }
 
-
-    .site__navigation {
-        width: 50%;
-        display: flex;
+    .image-part .site__navigation__prev {
+        width: 10px;
     }
-    
-    .site__navigation__next {
-        margin-left: 91%;
-    }
+ 
+   
     .image-part .site__navigation img > .arrows {
         width: 81px; 
         height: 71px;
-        border: 2px solid #ccc; /* Ajouter une bordure */
-        border-radius: 5px; /* Ajouter un arrondi aux coins */
-        transition: transform 0.3s ease-in-out; /* Ajouter une transition pour un effet de survol */
+        border: 2px solid #ccc; 
+        border-radius: 5px; 
+        transition: transform 0.3s ease-in-out; 
         object-fit: contain;
     }
 
- 
+    .site__navigation {
+        display: flex;
+        align-items: center;
+    }
+    
+    .site__navigation__prev,
+    .site__navigation__next {
+        margin-top: 30px;
+        position: relative;
+    }
+    
+    .site__navigation__prev {
+        margin-right: 10px;
+    }
+    
     .arrow {
         border: none;
         margin-left: -13px;
     }
-    /* Effet de survol sur les miniatures */
+    
     .image-part .site__navigation img:hover {
-        transform: scale(1.1); /* Agrandir légèrement l'image */
-        border-color: #555; /* Changer la couleur de la bordure */
+        transform: scale(1.1);
+        border-color: #555;
+    }
+    
+    .miniature {
+        margin-left: 10%;
+        margin-right: 13%;
+    }
+    
+    .thumbnail {
+        display: none;
+        position: absolute;
+        top: -1px;
+        left: 40%;
+        transform: translateX(-50%);
+        background-color: #fff;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        width: 80px;
+        height: 71px;
+        margin-top: -50px;
+        object-fit: cover;
+    }
+    
+    .arrow-left,
+    .arrow-right {
+        padding-top: 25px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .navigation-link:hover .thumbnail {
+        display: block;
+    }
+    
+    
+    .navigation-link:hover .thumbnail {
+        display: flex;
+     
     }
 
+     .site__navigation {
+        display: flex;
+    }
+    
+    .site__navigation {
+        display: flex;
+        align-items: center; 
+    }
+    
+    .site__navigation__prev,
+    .site__navigation__next {
+        position: relative; 
+    }
+    
+ 
+    
+    .navigation-link:hover .thumbnail {
+        display: block;
+    }
+   
+    
+
+  
     .contact-div {
-        margin-top: 60px;
-        padding-top: 20px;
+        margin-top: 30px;
         justify-content: space-between;
         display: flex;
-        padding-bottom: 60px;
     }
 
 
@@ -1379,6 +1446,10 @@ footer {
         font-family: 'Poppins', sans-serif;
         font-size: 14px;
         letter-spacing: normal;
+    }
+
+    .contact-btn {
+        margin-right: 30%;
     }
 
     .more {
@@ -1395,6 +1466,7 @@ footer {
         border-bottom: #000 solid 1px;
         color: #000;
         width: 1100px;
+
     }
 
     .logo {
@@ -1453,7 +1525,7 @@ footer {
         position: fixed;
         z-index: 1;
         left: 0;
-        top: 0;
+        top: -40px;
         width: 100%;
         margin-left: auto;
         margin-right: auto;
@@ -1461,15 +1533,13 @@ footer {
         background-color: rgb(0, 0, 0);
         background-color: rgba(0, 0, 0, 0.4);
     }
-    .form-contact {
-        height: 100vh;
-    }
+   
     /* Modal Content/Box */
     .modal-content {
         margin: 2% auto;
         border: 1px solid #888;
-        width: 38%;
-        height: 50%;
+        width: 40%;
+        height: 100vh;
     }
 
     /* The Close Button */
@@ -1513,7 +1583,7 @@ footer {
 
     .form-contact {
         width: 597px;
-        /* text-align: center; */
+        height: 770px;
         border: #000 solid;
         margin-left: auto;
         margin-right: auto;
