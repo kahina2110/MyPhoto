@@ -195,8 +195,15 @@ footer {
     padding-top: 10px;
 }
 
+
+
+
+
+
+
+
 /* Smartphones ----------- */
-@media screen and (min-width: 375px) and (max-width: 767px) {
+@media screen and (min-width: 320px) and (max-width: 767px) {
     header {
         display: flex;
     }
@@ -245,7 +252,8 @@ footer {
       #lightbox {
         position: absolute;
         top: 60%;
-        left: 50%;
+        left: 180px;
+        background-color: rgba(0, 0, 0, 0.8);
         transform: translate(-50%, -50%);
         padding: 20px;
       }
@@ -349,6 +357,7 @@ footer {
 
     .container {
         justify-content: center;
+        overflow-x: hidden;
     }
     /**SINGLE PAGE **/
 
@@ -539,7 +548,6 @@ footer {
       .modal {
         position: fixed;
         top: 50%;
-        left: 30%;
         transform: translate(-50%, -50%);
     }
     .wpcf7.js {
@@ -553,7 +561,6 @@ footer {
     /* Modal Content/Box */
     .modal-content {
         background-color: #fefefe;
-        margin: 5% ;
         width: 55%;
     }
 
@@ -675,7 +682,7 @@ footer {
     .post-content .overlay {
         position: absolute;
         top: 0;
-        left: 3em;
+        left: 13vw;
         width: 279px;
         height: 279px;
         background-color: rgba(0, 0, 0, 0.6);

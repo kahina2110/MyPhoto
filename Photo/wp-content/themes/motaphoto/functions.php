@@ -268,13 +268,17 @@ function load_more_posts() {
                                 $image_alt = $image['alt'];
                             }
                             $title = get_field('title');
+                            $categories = get_the_terms(get_the_ID(), 'categorie');
+
             $post_data = array(
                 'post_title' => get_the_title(),
                 'title' => $title,
                 'post_content' => get_the_excerpt(),
                 'post_link' => get_permalink(),
                 'image_src' => $image_url,
-                'image_alt' => $image_alt
+                'image_alt' => $image_alt,
+                'category' => isset($categories[0]) ? $categories[0]->name : '', // Vérifier si la catégorie existe
+
             );
             $posts[] = $post_data;
         }
